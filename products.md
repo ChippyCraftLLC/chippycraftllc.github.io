@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Products
+title: ChippyCraft
 ---
 
 # ChippyCraft Products
