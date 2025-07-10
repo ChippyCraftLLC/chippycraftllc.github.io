@@ -1,6 +1,6 @@
 
 ---
-layout: null
+layout: default
 title: Products
 ---
 
