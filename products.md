@@ -3,28 +3,32 @@ layout: default
 title: Products
 ---
 
-# Our Products
+# ChippyCraft Products
 
 Welcome to ChippyCraft's collection of handcrafted, modern-industrial infinity furniture. Each piece is a unique fusion of art, design, and function.
 
 ---
 
-## 🔷 Indoor Infinity Tables
-**Custom epoxy and LED designs** built into coffee and end tables. Each is a one-of-a-kind piece featuring:
+## Epoxy Infinity Tables
+**Custom epoxy designs** suspended in air for futuristic coffee and end tables. Each is a one-of-a-kind piece featuring:
 
-- Multi-layer epoxy art
-- Programmable LED lighting
-- Glass or acrylic insets
-- Polished metal accents
+- "Metal Calligraphy" hand-formed by the owner/artist, Chippy
+- Colored epoxy lends to "stained glass" effect
+- Anti-scratch ceramic top coat
+- Powder coated to fit any interior's theme
+- Optional: LED lighting
 
 ---
 
-## 🔥 Outdoor Fire Tables
-Functional fire pit tables with **custom sheet metal art** and weather-resistant design:
+## Infinity Patio Tables
+Functional fire pit infinity table designed by **UW-River Falls students**
 
-- Illuminated infinity mirror fire ring
-- Steel and reclaimed wood blend
-- Ideal for patios and decks
+- Customized sheet metal art on all four sides
+- Bottle opener on table top
+- Ideal for patios and decks both resientially and commercially
+- Powder coated to match any theme
+- Burner and pan designed to reduce radient heat
+- Ask about memorializing your pets
 
 ---
 
@@ -33,12 +37,13 @@ Infinity-frame chairs to complement any ChippyCraft table:
 
 - Matching metal frame design
 - Comfortable modern-industrial aesthetic
-- Optional LED-lit backs
+- Powder coated to match any theme
+- Optional: umbrella holder
 
 ---
 
 ## 💡 Coming Soon: Infinity Lamps
-Using the infinity mirror concept in a sculptural lamp form — stay tuned!
+Using the infinity frame concept in a sculptural lamp form and "floating" light — stay tuned!
 
 ---
 
