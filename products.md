@@ -3,7 +3,7 @@ layout: default
 title: ChippyCraft
 ---
 
-# ChippyCraft Products
+# What do we make here at ChippyCraft?
 
 Welcome to ChippyCraft's collection of handcrafted, modern-industrial infinity furniture. Each piece is a unique fusion of art, design, and function.
 
