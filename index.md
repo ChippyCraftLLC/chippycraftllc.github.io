@@ -3,7 +3,7 @@ layout: default
 title: Welcome to ChippyCraft
 ---
 
-# 👋 Welcome to ChippyCraft, LLC
+# Welcome to ChippyCraft, LLC
 
 We create **custom modern-industrial infinity furniture** — blending artistic vision with everyday function.
 
