@@ -9,8 +9,8 @@ We create **custom modern-industrial infinity furniture** — blending artistic 
 
 Explore our handcrafted:
 
-- Indoor Infinity Tables  
-- Outdoor Fire Tables  
+- Epoxy Infinity Tables 
+- Patio Infinity Tables
 - Infinity Chairs  
 - And soon... Infinity Lamps!
 
