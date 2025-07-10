@@ -2,7 +2,7 @@ title: ChippyCraft, LLC
 email: mychippycraft@gmail.com
 description: >
   Modern-industrial, handcrafted infinity furniture. Functional art for inside and out.
-theme: jekyll-theme-minima
+theme: jekyll-theme-slate
 markdown: kramdown
 show_downloads: false
 plugins:
