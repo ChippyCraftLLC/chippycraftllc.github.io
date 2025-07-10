@@ -14,8 +14,7 @@ Explore our handcrafted:
 - Infinity Chairs  
 - And soon... Infinity Lamps!
 
-👉 [Check out our Products](products.html)
 
-Want to discuss a custom build? [Email us](mailto:mychippycraft@gmail.com)
 [Explore the Portfolio](portfolio.html)  
 [Start a Custom Order](products.html)
+Want to discuss a custom build? [Email us](mailto:mychippycraft@gmail.com)
