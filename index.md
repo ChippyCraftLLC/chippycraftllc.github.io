@@ -17,4 +17,5 @@ Explore our handcrafted:
 
 [Explore the Portfolio](portfolio.html)  
 [Start a Custom Order](products.html)
+
 Want to discuss a custom build? [Email us](mailto:mychippycraft@gmail.com)
