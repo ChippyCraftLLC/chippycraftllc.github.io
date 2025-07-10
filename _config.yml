@@ -1,10 +1,7 @@
-
 title: ChippyCraft, LLC
 email: mychippycraft@gmail.com
 description: >-
   Modern-industrial, handcrafted infinity furniture. Functional art for inside and out.
-baseurl: ""
-url: "https://yourusername.github.io" # change this to your GitHub Pages URL
-remote_theme: pages-themes/cayman@v0.2.0
+theme: jekyll-theme-cayman
 plugins:
   - jekyll-feed
