@@ -15,6 +15,7 @@ Explore our handcrafted:
 - And soon... Infinity Lamps!
 
 
+[About Us](about.html)
 [Explore the Portfolio](portfolio.html)  
 [Start a Custom Order](products.html)
 
