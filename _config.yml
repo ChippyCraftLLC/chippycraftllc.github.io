@@ -5,6 +5,6 @@ description: >-
   Modern-industrial, handcrafted infinity furniture. Functional art for inside and out.
 baseurl: ""
 url: "https://yourusername.github.io" # change this to your GitHub Pages URL
-theme: pages-themes/cayman@v0.2.0
+theme: jekyll-theme-cayman
 plugins:
   - jekyll-feed
