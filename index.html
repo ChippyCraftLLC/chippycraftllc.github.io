@@ -110,10 +110,21 @@
       background: #0d0d0d;
     }
   </style>
+body {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+body.loaded {
+  opacity: 1;
+}
 
   <!-- Orbitron font -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
 </head>
+  
+<script>
+  window.addEventListener('load', () => document.body.classList.add('loaded'));
+</script>
 
 <body>
   <div class="hero">
