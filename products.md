@@ -45,6 +45,9 @@ Infinity-frame chairs to complement any ChippyCraft table:
 ## 💡 Coming Soon: Infinity Lamps
 Using the infinity frame concept in a sculptural lamp form and "floating" light — stay tuned!
 
+**More...?!**
+Thermal-Electric Lights!
+
 ---
 
 Want to commission your own piece?
