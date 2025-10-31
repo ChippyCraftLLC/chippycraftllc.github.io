@@ -119,11 +119,15 @@
   <div class="hero">
     <img src="assets/images/Business Card 01 colored.png" alt="ChippyCraft LLC Logo" class="logo" />
     <p class="tagline">Modern-industrial, handcrafted infinity furniture. Functional art for inside and out.</p>
-    <a href="products.html" class="enter-button">Enter Website</a>
-  </div>
+    <a href="products.html" class="enter-button" onclick="fadeAndRedirect(event)">Enter Website</a>
 
-  <section id="content">
-    <p>Coming soon...</p>
-  </section>
-</body>
-</html>
+<script>
+  function fadeAndRedirect(event) {
+    event.preventDefault();
+    document.body.style.transition = "opacity 0.6s ease";
+    document.body.style.opacity = "0";
+    setTimeout(() => {
+      window.location = event.target.href;
+    }, 600);
+  }
+</script>
