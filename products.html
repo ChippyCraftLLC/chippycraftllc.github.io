@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChippyCraft | Custom Builds</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0d0d0d url('assets/images/brushed-metal.png') repeat;
+      background-size: cover;
+      color: #e0e0e0;
+      font-family: 'Orbitron', sans-serif;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+      border-bottom: 1px solid rgba(0,255,255,0.3);
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+    }
+
+    header h1 {
+      font-size: 2rem;
+      color: #00ffff;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      padding: 3rem 2rem;
+    }
+
+    .card {
+      background: rgba(20,20,20,0.85);
+      border: 1px solid rgba(0,255,255,0.2);
+      border-radius: 10px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(0,255,255,0.05);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(0,255,255,0.8);
+      box-shadow: 0 0 25px rgba(0,255,255,0.5);
+    }
+
+    .card h2 {
+      color: #00ffff;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #d0d0d0;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.6rem 1.8rem;
+      border: 2px solid #00ffff;
+      color: #00ffff;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .btn:hover {
+      background: #00ffff;
+      color: #0d0d0d;
+      box-shadow: 0 0 15px #00ffff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      border-top: 1px solid rgba(0,255,255,0.2);
+      background: rgba(0,0,0,0.6);
+      color: #999;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Custom Builds</h1>
+  </header>
+
+  <main class="products">
+    <div class="card">
+      <h2>Infinity Tables</h2>
+      <p>Custom-welded steel frames and precision-poured epoxy centers. Each piece is built to order — designed for durability, modern aesthetics, and that mesmerizing infinity glow.</p>
+      <a href="#" class="btn">Learn More</a>
+    </div>
+
+    <div class="card">
+      <h2>Epoxy Art Tables</h2>
+      <p>Combining metalwork and art, these pieces feature colored epoxy resin patterns — rivers, marbling, or galaxy effects — embedded in natural wood or metal surfaces.</p>
+      <a href="#" class="btn">Learn More</a>
+    </div>
+
+    <div class="card">
+      <h2>Custom Fabrication</h2>
+      <p>From patio furniture to wall-mounted displays, we build durable, custom metal and epoxy creations for indoor and outdoor use. If you can imagine it, we can weld it.</p>
+      <a href="#" class="btn">Learn More</a>
+    </div>
+
+    <div class="card">
+      <h2>Features & Options</h2>
+      <p>- Epoxy colors, patterns, and depth options<br>
+         - Steel finish: brushed, matte black, or powder-coated<br>
+         - LED lighting integration<br>
+         - Indoor & outdoor protection coating</p>
+      <a href="#" class="btn">Contact to Order</a>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 ChippyCraft LLC — All Rights Reserved
+  </footer>
+</body>
+</html>
