@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChippyCraft | About</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #0d0d0d url('assets/images/brushed-metal.png') repeat;
+      background-size: cover;
+      color: #e0e0e0;
+      font-family: 'Orbitron', sans-serif;
+      min-height: 100vh;
+      opacity: 1;
+      transition: opacity 0.6s ease;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+      border-bottom: 1px solid rgba(0,255,255,0.3);
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+    }
+
+    header h1 {
+      font-size: 2rem;
+      color: #00ffff;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .intro {
+      margin-bottom: 2.5rem;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .intro p {
+      color: #d0d0d0;
+      font-size: 1rem;
+      max-width: 700px;
+      margin: 1rem auto;
+    }
+
+    .story, .craft {
+      background: rgba(20,20,20,0.85);
+      border: 1px solid rgba(0,255,255,0.2);
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 15px rgba(0,255,255,0.15);
+      text-align: left;
+    }
+
+    .story h2, .craft h2 {
+      color: #00ffff;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .story p, .craft p {
+      color: #d0d0d0;
+      margin-bottom: 1rem;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid rgba(0,255,255,0.3);
+      box-shadow: 0 0 10px rgba(0,255,255,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 20px rgba(0,255,255,0.6);
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 2.5rem;
+      padding: 0.8rem 2rem;
+      border: 2px solid #00ffff;
+      color: #00ffff;
+      background: transparent;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .btn:hover {
+      background: #00ffff;
+      color: #0d0d0d;
+      box-shadow: 0 0 15px #00ffff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      border-top: 1px solid rgba(0,255,255,0.2);
+      background: rgba(0,0,0,0.6);
+      color: #999;
+      font-size: 0.85rem;
+      margin-top: 4rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>About ChippyCraft</h1>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>Where engineering meets art — ChippyCraft creates one-of-a-kind modern-industrial furniture pieces that bring light, metal, and epoxy together in ways you’ve never seen before.</p>
+    </section>
+
+    <section class="story">
+      <h2>Our Story</h2>
+      <p>ChippyCraft began with a simple idea: metal and light could be more than functional — they could be expressive. What started as a small welding project quickly evolved into a design journey, where every table and chair is a statement piece, built by hand with the precision of an engineer and the creativity of an artist.</p>
+      <p>Each piece we make is meant to feel alive — glowing from within, reflecting its surroundings, and transforming ordinary spaces into immersive environments.</p>
+    </section>
+
+    <section class="craft">
+      <h2>Our Craft</h2>
+      <p>Every ChippyCraft creation blends industrial durability with aesthetic imagination. From infinity-lit tables to weather-resistant outdoor designs, our work is guided by balance — strength and elegance, structure and light.</p>
+
+      <div class="gallery">
+        <img src="assets/images/sample1.jpg" alt="Workshop example 1">
+        <img src="assets/images/sample2.jpg" alt="Workshop example 2">
+        <img src="assets/images/sample3.jpg" alt="Workshop example 3">
+      </div>
+
+      <p>We don’t mass-produce — every weld, every epoxy pour, every reflection of light is intentional. Built to last. Designed to impress. Crafted to be yours.</p>
+    </section>
+
+    <div style="text-align:center;">
+      <a href="products.html" class="btn">View Products</a>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 ChippyCraft LLC — All Rights Reserved
+  </footer>
+
+  <script>
+    // Fade transitions
+    document.querySelectorAll('.btn, a').forEach(link => {
+      link.addEventListener('click', e => {
+        const href = link.getAttribute('href');
+        if (href && !href.startsWith('#') && !href.startsWith('mailto:')) {
+          e.preventDefault();
+          document.body.style.transition = "opacity 0.6s ease";
+          document.body.style.opacity = "0";
+          setTimeout(() => {
+            window.location = href;
+          }, 600);
+        }
+      });
+    });
+
+    window.addEventListener('load', () => {
+      document.body.style.opacity = "0";
+      setTimeout(() => {
+        document.body.style.transition = "opacity 0.8s ease";
+        document.body.style.opacity = "1";
+      }, 50);
+    });
+  </script>
+</body>
+</html>
