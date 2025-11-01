@@ -9,12 +9,15 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      background: #0d0d0d url('assets/images/brushed-metal.png') repeat;
-      background-size: cover;
-      color: #e0e0e0;
-      font-family: 'Orbitron', sans-serif;
-      min-height: 100vh;
-    }
+  background: #0d0d0d url('assets/images/brushed-metal.png') repeat;
+  background-size: cover;
+  color: #e0e0e0;
+  font-family: 'Orbitron', sans-serif;
+  min-height: 100vh;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+
 
     header {
       text-align: center;
@@ -173,5 +176,31 @@
   <footer>
     © 2025 ChippyCraft LLC — All Rights Reserved
   </footer>
+  
+  <script>
+  // Fade out when clicking any navigation or button link
+  document.querySelectorAll('.btn, a').forEach(link => {
+    link.addEventListener('click', e => {
+      const href = link.getAttribute('href');
+      if (href && !href.startsWith('#') && !href.startsWith('mailto:')) {
+        e.preventDefault();
+        document.body.style.transition = "opacity 0.6s ease";
+        document.body.style.opacity = "0";
+        setTimeout(() => {
+          window.location = href;
+        }, 600);
+      }
+    });
+  });
+
+  // Fade in when the page loads
+  window.addEventListener('load', () => {
+    document.body.style.opacity = "0";
+    setTimeout(() => {
+      document.body.style.transition = "opacity 0.8s ease";
+      document.body.style.opacity = "1";
+    }, 50);
+  });
+</script>
 </body>
 </html>
