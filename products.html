@@ -13,12 +13,14 @@
     }
 
     body {
-      background: #0d0d0d url('assets/images/brushed-metal.png') repeat;
-      background-size: cover;
-      color: #e0e0e0;
-      font-family: 'Orbitron', sans-serif;
-      min-height: 100vh;
-    }
+  background: #0d0d0d url('assets/images/brushed-metal.png') repeat;
+  background-size: cover;
+  color: #e0e0e0;
+  font-family: 'Orbitron', sans-serif;
+  min-height: 100vh;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
 
     header {
       text-align: center;
@@ -137,5 +139,30 @@
   <footer>
     © 2025 ChippyCraft LLC — All Rights Reserved
   </footer>
+  
+  <script>
+  // Fade out when clicking any product button
+  document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      if (btn.getAttribute('href') && btn.getAttribute('href') !== '#') {
+        e.preventDefault();
+        document.body.style.transition = "opacity 0.6s ease";
+        document.body.style.opacity = "0";
+        setTimeout(() => {
+          window.location = btn.getAttribute('href');
+        }, 600);
+      }
+    });
+  });
+
+  // Fade in when the page loads
+  window.addEventListener('load', () => {
+    document.body.style.opacity = "0";
+    setTimeout(() => {
+      document.body.style.transition = "opacity 0.8s ease";
+      document.body.style.opacity = "1";
+    }, 50);
+  });
+</script>
 </body>
 </html>
