@@ -1,1 +1,25 @@
+{
+  "albums": [
+    {
+      "title": "Full Epoxy Tables",
+      "folder": "epoxy",
+      "images": ["table1.jpg", "table2.jpg", "table3.jpg"]
+    },
+    {
+      "title": "Full Patio Sets / Tables",
+      "folder": "patio",
+      "images": ["patio1.jpg", "patio2.jpg", "patio3.jpg"]
+    },
+    {
+      "title": "Metal Calligraphy Inspiration",
+      "folder": "calligraphy",
+      "images": ["metal1.jpg", "metal2.jpg"]
+    },
+    {
+      "title": "Sheet Metal Inspiration",
+      "folder": "sheetmetal",
+      "images": ["sheet1.jpg", "sheet2.jpg"]
+    }
+  ]
+}
 
