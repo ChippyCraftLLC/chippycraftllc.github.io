@@ -24,7 +24,19 @@ fetch('assets/gallery/gallery.json')
 
       albumDiv.appendChild(imagesDiv);
       galleryContainer.appendChild(albumDiv);
+
+      // Handle album click to expand/collapse
+      title.addEventListener('click', () => {
+        const isActive = albumDiv.classList.contains('active');
+        document.querySelectorAll('.album').forEach(a => a.classList.remove('active', 'minimized'));
+
+        if (!isActive) {
+          albumDiv.classList.add('active');
+          document.querySelectorAll('.album').forEach(a => {
+            if (a !== albumDiv) a.classList.add('minimized');
+          });
+        }
+      });
     });
   })
   .catch(error => console.error("Error loading gallery:", error));
-
