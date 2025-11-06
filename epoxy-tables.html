@@ -137,6 +137,73 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    /* Navigation Menu */
+.nav-menu {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1000;
+}
+
+.menu-logo {
+  position: relative;
+  display: inline-block;
+}
+
+.menu-logo img {
+  width: 60px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: drop-shadow(0 0 10px rgba(0,255,255,0.5));
+}
+
+.menu-logo img:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 15px rgba(0,255,255,0.8));
+}
+
+.menu-links {
+  list-style: none;
+  position: absolute;
+  top: 15px;
+  left: 70px;
+  display: flex;
+  gap: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease;
+}
+
+.menu-logo:hover .menu-links {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+
+.menu-links li a {
+  color: #00ffff;
+  text-decoration: none;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.menu-links li a:hover {
+  color: #ffffff;
+  text-shadow: 0 0 8px #00ffff;
+}
+
+.menu-links li {
+  transform: translateX(-15px);
+  transition: transform 0.3s ease;
+}
+
+.menu-logo:hover .menu-links li {
+  transform: translateX(0);
+}
+
   </style>
 </head>
 
