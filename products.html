@@ -3,31 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ChippyCraft | Custom Builds</title>
+  <title>ChippyCraft | Products</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-  background: #0d0d0d url('assets/images/brushed-metal.png') repeat;
-  background-size: cover;
-  color: #e0e0e0;
-  font-family: 'Orbitron', sans-serif;
-  min-height: 100vh;
-  opacity: 1;
-  transition: opacity 0.6s ease;
-}
+      background: #0d0d0d url('assets/images/brushed-metal.png') repeat;
+      background-size: cover;
+      color: #e0e0e0;
+      font-family: 'Orbitron', sans-serif;
+      min-height: 100vh;
+      opacity: 1;
+      transition: opacity 0.6s ease;
+    }
 
     header {
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 2rem 1rem 3rem 1rem;
       border-bottom: 1px solid rgba(0,255,255,0.3);
       background: rgba(0,0,0,0.6);
       backdrop-filter: blur(4px);
+      position: relative;
     }
 
     header h1 {
@@ -37,49 +34,42 @@
       text-transform: uppercase;
     }
 
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      padding: 3rem 2rem;
+    main {
+      max-width: 1000px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+      line-height: 1.6;
+      text-align: center;
     }
 
-    .card {
+    section {
       background: rgba(20,20,20,0.85);
       border: 1px solid rgba(0,255,255,0.2);
       border-radius: 10px;
       padding: 2rem;
-      text-align: center;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 10px rgba(0,255,255,0.05);
+      margin-bottom: 2rem;
+      box-shadow: 0 0 15px rgba(0,255,255,0.15);
     }
 
-    .card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(0,255,255,0.8);
-      box-shadow: 0 0 25px rgba(0,255,255,0.5);
-    }
-
-    .card h2 {
+    section h2 {
       color: #00ffff;
-      font-size: 1.4rem;
-      margin-bottom: 1rem;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      text-align: center;
+      margin-bottom: 1rem;
     }
 
-    .card p {
-      font-size: 0.95rem;
+    section p {
       color: #d0d0d0;
-      line-height: 1.5;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
 
     .btn {
       display: inline-block;
-      padding: 0.6rem 1.8rem;
+      margin-top: 2.5rem;
+      padding: 0.8rem 2rem;
       border: 2px solid #00ffff;
       color: #00ffff;
+      background: transparent;
       text-decoration: none;
       text-transform: uppercase;
       letter-spacing: 1px;
@@ -101,94 +91,152 @@
       background: rgba(0,0,0,0.6);
       color: #999;
       font-size: 0.85rem;
+      margin-top: 4rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Navigation Menu */
+    .nav-menu {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 1000;
+    }
+
+    .menu-logo {
+      position: relative;
+      display: inline-block;
+    }
+
+    .menu-logo img {
+      width: 60px;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease, filter 0.3s ease;
+      filter: drop-shadow(0 0 10px rgba(0,255,255,0.5));
+    }
+
+    .menu-logo img:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 15px rgba(0,255,255,0.8));
+    }
+
+    .menu-links {
+      list-style: none;
+      position: absolute;
+      top: 15px;
+      left: 70px;
+      display: flex;
+      gap: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.4s ease;
+    }
+
+    .menu-logo:hover .menu-links {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(0);
+    }
+
+    .menu-links li a {
+      color: #00ffff;
+      text-decoration: none;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    .menu-links li a:hover {
+      color: #ffffff;
+      text-shadow: 0 0 8px #00ffff;
+    }
+
+    .menu-links li {
+      transform: translateX(-15px);
+      transition: transform 0.3s ease;
+    }
+
+    .menu-logo:hover .menu-links li {
+      transform: translateX(0);
     }
   </style>
 </head>
 
 <body>
+  <!-- Navigation -->
+  <nav class="nav-menu">
+    <div class="menu-logo">
+      <img src="assets/images/colored-emblem-01a.png" alt="ChippyCraft Icon" class="menu-icon">
+      <ul class="menu-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <header>
-    <!-- Navigation Menu -->
-<nav class="nav-menu">
-  <div class="menu-logo">
-    <img src="assets/images/colored-emblem-01a.png" alt="ChippyCraft Icon" class="menu-icon">
-    <ul class="menu-links">
-      <li><a href="about.html">About</a></li>
-      <li><a href="products.html">Products</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </div>
-</nav>
-
-<style>
-  /* Navigation Styling */
-  .nav-menu {
-    position: fixed;
-    top: 1rem;
-    left: 1rem;
-    z-index: 1000;
-  }
-
-  .menu-logo {
-    position: relative;
-    display
-
-    <h1>Hand-Made Infinity Furniture</h1>
+    <h1>Products</h1>
   </header>
 
-  <main class="products">
-    <div class="card">
-      <h2>Epoxy Tables</h2>
-      <p>Custom-welded steel infinity frames and made-to-order epoxy art. Each piece is designed for an indoor modern- industrial, floating aesthetic.</p>
+  <main>
+    <section>
+      <h2>Infinity Epoxy Tables</h2>
+      <p>Handcrafted modern-industrial designs featuring our signature epoxy art — where color, metal, and imagination meet to create floating illusions of depth and light. Every piece is custom-built to fit your space and your vision.</p>
       <a href="epoxy-tables.html" class="btn">Learn More</a>
-    </div>
+    </section>
 
-    <div class="card">
-      <h2>Fire-Patio Tables</h2>
-      <p>Using the same Infinity frame design for outdoor seating. Customize each side each side with symbols, patterns, and even pictures!</p>
+    <section>
+      <h2>Fire Patio Tables</h2>
+      <p>Outdoor luxury meets engineering precision. Our fire tables combine strength and atmosphere with customizable features like sheet-metal art panels, color lighting, and functional elegance for every season.</p>
       <a href="fire-patio-tables.html" class="btn">Learn More</a>
-    </div>
+    </section>
 
-    <div class="card">
-      <h2>Infinity Chairs</h2>
-      <p>Defy gravity while you sit on a ChippyCraft original. Complete any patio set with matching chairs.</p>
-      <a href="infinity-chairs.html" class="btn">Learn More</a>
-    </div>
+    <section>
+      <h2>Lighting & Power Systems</h2>
+      <p>Powered by innovation — our thermoelectric and infinity lighting systems bring energy efficiency and artistic illumination to your outdoor or indoor spaces. Designed for performance and visual impact.</p>
+      <a href="lighting-systems.html" class="btn">Learn More</a>
+    </section>
 
-    <div class="card">
-      <h2>Infinity Lighting</h2>
-      <p>Coming soon...</p>
-      <a href="infinity-lighting.html" class="btn">Learn what's in store...</a>
-    </div>
+    <section>
+      <h2>Custom Orders</h2>
+      <p>Looking for something truly unique? We’ll collaborate with you to design one-of-a-kind furniture and art that captures your story — from personalized inlays to fully engineered installations.</p>
+      <a href="contact.html" class="btn">Contact to Order</a>
+    </section>
   </main>
 
   <footer>
     © 2025 ChippyCraft LLC — All Rights Reserved
   </footer>
-  
-  <script>
-  // Fade out when clicking any product button
-  document.querySelectorAll('.btn').forEach(btn => {
-    btn.addEventListener('click', e => {
-      if (btn.getAttribute('href') && btn.getAttribute('href') !== '#') {
-        e.preventDefault();
-        document.body.style.transition = "opacity 0.6s ease";
-        document.body.style.opacity = "0";
-        setTimeout(() => {
-          window.location = btn.getAttribute('href');
-        }, 600);
-      }
-    });
-  });
 
-  // Fade in when the page loads
-  window.addEventListener('load', () => {
-    document.body.style.opacity = "0";
-    setTimeout(() => {
-      document.body.style.transition = "opacity 0.8s ease";
-      document.body.style.opacity = "1";
-    }, 50);
-  });
-</script>
+  <script>
+    // Fade transitions for all navigation and buttons
+    document.querySelectorAll('.btn, a').forEach(link => {
+      link.addEventListener('click', e => {
+        const href = link.getAttribute('href');
+        if (href && !href.startsWith('#') && !href.startsWith('mailto:')) {
+          e.preventDefault();
+          document.body.style.transition = "opacity 0.6s ease";
+          document.body.style.opacity = "0";
+          setTimeout(() => window.location = href, 600);
+        }
+      });
+    });
+
+    window.addEventListener('load', () => {
+      document.body.style.opacity = "0";
+      setTimeout(() => {
+        document.body.style.transition = "opacity 0.8s ease";
+        document.body.style.opacity = "1";
+      }, 50);
+    });
+  </script>
 </body>
 </html>
