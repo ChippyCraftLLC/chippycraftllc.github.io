@@ -20,10 +20,11 @@
 
     header {
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 2rem 1rem 3rem 1rem;
       border-bottom: 1px solid rgba(0,255,255,0.3);
       background: rgba(0,0,0,0.6);
       backdrop-filter: blur(4px);
+      position: relative;
     }
 
     header h1 {
@@ -130,21 +131,99 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    /* Navigation Menu */
+    .nav-menu {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 1000;
+    }
+
+    .menu-logo {
+      position: relative;
+      display: inline-block;
+    }
+
+    .menu-logo img {
+      width: 60px;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease, filter 0.3s ease;
+      filter: drop-shadow(0 0 10px rgba(0,255,255,0.5));
+    }
+
+    .menu-logo img:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 15px rgba(0,255,255,0.8));
+    }
+
+    .menu-links {
+      list-style: none;
+      position: absolute;
+      top: 15px;
+      left: 70px;
+      display: flex;
+      gap: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.4s ease;
+    }
+
+    .menu-logo:hover .menu-links {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(0);
+    }
+
+    .menu-links li a {
+      color: #00ffff;
+      text-decoration: none;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    .menu-links li a:hover {
+      color: #ffffff;
+      text-shadow: 0 0 8px #00ffff;
+    }
+
+    .menu-links li {
+      transform: translateX(-15px);
+      transition: transform 0.3s ease;
+    }
+
+    .menu-logo:hover .menu-links li {
+      transform: translateX(0);
+    }
   </style>
 </head>
 
 <body>
+  <!-- Navigation -->
+  <nav class="nav-menu">
+    <div class="menu-logo">
+      <img src="assets/images/colored-emblem-01a.png" alt="ChippyCraft Icon" class="menu-icon">
+      <ul class="menu-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <header>
     <h1>About ChippyCraft</h1>
   </header>
 
   <main>
-    <!-- Intro: Brand summary -->
     <section class="intro">
       <p>Where engineering meets art — ChippyCraft creates one-of-a-kind, modern-industrial furniture pieces that blend metal and epoxy into designs unlike anything else out there.</p>
     </section>
 
-    <!-- Personal Story (now highlighted) -->
     <section class="story">
       <h2>Meet the Maker</h2>
       <p>"I'm Chippy and this is my Craft! Allow me to introduce myself. I’m <strong>Ryan "Chippy" Bostrom</strong>, owner of <strong>ChippyCraft LLC</strong>.  
@@ -153,7 +232,6 @@
       <p>That drive became <strong>ChippyCraft</strong> — a studio where craftsmanship meets engineering. Where I turn raw materials into functional art. Every piece is personal — designed, welded, and finished by hand, a true reflection of the maker behind the hood.</p>
     </section>
 
-    <!-- ChippyCraft Story -->
     <section class="story">
       <h2>Our Story</h2>
       <p>ChippyCraft started from the belief that cookie-cutter furniture is <strong>boring</strong>. Our vision is to revamp living spaces — inside and out. Every project is an opportunity to reimagine what’s possible when engineering and art collide.</p>
@@ -163,7 +241,6 @@
       <p>ChippyCraft isn’t mass-produced or factory-fabricated. It’s unapologetically sophisticated, artistic, and sleek. Every piece carries the fingerprints of its maker — a blend of grit, creativity, and technical know-how that turns the mundane into something extraordinary.</p>
     </section>
 
-    <!-- Gallery -->
     <section class="gallery">
       <img src="assets/images/sample1.jpg" alt="Workshop example 1">
       <img src="assets/images/sample2.jpg" alt="Workshop example 2">
@@ -175,49 +252,31 @@
     <div style="text-align:center;">
       <a href="products.html" class="btn">View Products</a>
     </div>
-    
-    <!-- Art Behind the Craft -->
-<section class="craft" style="margin-top:3rem;">
-  <h2>The Art Behind the Craft</h2>
-  <p style="text-align:center; max-width:700px; margin:0 auto 2rem auto;">
-    I invite you behind the curtain to understand just what defines ChippyCraft and see where the line blurs between furniture and art.
-  </p>
 
-  <!-- Epoxy Art Subsection -->
-  <h3 style="color:#00ffff; text-align:center; text-transform:uppercase; margin-top:1.5rem;">Epoxy Art</h3>
-  <p>ChippyCraft was never meant to just build furniture — it was meant to build stories. <strong>You</strong> bring the imagination behind every new design, and the final product becomes a collaboration between maker and owner. Together, <strong>we</strong> create personal pieces that <strong>you</strong> have breathed into life.</p>
+    <section class="craft" style="margin-top:3rem;">
+      <h2>The Art Behind the Craft</h2>
+      <p style="text-align:center; max-width:700px; margin:0 auto 2rem auto;">
+        I invite you behind the curtain to understand just what defines ChippyCraft and see where the line blurs between furniture and art.
+      </p>
 
-  <p>Whether it’s embedding the ashes of a beloved pet, preserving a flower from your wedding day, or immortalizing a symbol that means something only to you — nearly anything can be suspended in clear epoxy, sealed forever in light and time. <strong>Each tabletop is a blank space to capture something timeless.</strong></p>
+      <h3 style="color:#00ffff; text-align:center; text-transform:uppercase; margin-top:1.5rem;">Epoxy Art</h3>
+      <p>ChippyCraft was never meant to just build furniture — it was meant to build stories. <strong>You</strong> bring the imagination behind every new design, and the final product becomes a collaboration between maker and owner. Together, <strong>we</strong> create personal pieces that <strong>you</strong> have breathed into life.</p>
 
-  <p>My specialty is what I call <strong>metal calligraphy</strong>. It uses thin strips of hand-shaped steel that twist and curve into symbols, lettering, or abstract forms. These lines act like the framework of stained glass, but instead of holding glass, they cradle color — translucent epoxy poured into each shape, one at a time, until the design comes alive.</p>
+      <p>Whether it’s embedding the ashes of a beloved pet, preserving a flower from your wedding day, or immortalizing a symbol that means something only to you — nearly anything can be suspended in clear epoxy, sealed forever in light and time. <strong>Each tabletop is a blank space to capture something timeless.</strong></p>
 
-  <!-- Sheet Metal Art Subsection -->
-  <h3 style="color:#00ffff; text-align:center; text-transform:uppercase; margin-top:2.5rem;">Sheet Metal Art</h3>
-  <p>Your story doesn’t have to stop indoors — take it outside. Each patio table can be fitted with custom sheet-metal panels that turn structure into statement. From bold patriotic emblems to intricate Celtic knotwork, every CNC-plasma-cut design gives your table its own identity — unmistakable, personal, and built to stand the elements.</p>
+      <p>My specialty is what I call <strong>metal calligraphy</strong>. It uses thin strips of hand-shaped steel that twist and curve into symbols, lettering, or abstract forms. These lines act like the framework of stained glass, but instead of holding glass, they cradle color — translucent epoxy poured into each shape, one at a time, until the design comes alive.</p>
 
-  <p>Every panel is powder-coated for durability and can be paired with a backdrop that defines your style: a second sheet of metal for a crisp, modern contrast, or a stained wood backing for a warmer, rustic feel that feels as welcoming as the firelight.</p>
+      <h3 style="color:#00ffff; text-align:center; text-transform:uppercase; margin-top:2.5rem;">Sheet Metal Art</h3>
+      <p>Your story doesn’t have to stop indoors — take it outside. Each patio table can be fitted with custom sheet-metal panels that turn structure into statement. From bold patriotic emblems to intricate Celtic knotwork, every CNC-plasma-cut design gives your table its own identity — unmistakable, personal, and built to stand the elements.</p>
 
-  <p>Every pattern carries its own character. Whether it’s clean geometry, flowing lines, or a symbol that means something only to you, your vision becomes part of the piece — welded, finished, and made to last as long as the memories shared around it.</p>
+      <p>Every panel is powder-coated for durability and can be paired with a backdrop that defines your style: a second sheet of metal for a crisp, modern contrast, or a stained wood backing for a warmer, rustic feel that feels as welcoming as the firelight.</p>
 
-  <div style="text-align:center; margin-top:2.5rem;">
-  <a href="gallery.html" class="btn">View Gallery</a>
-</div>
+      <p>Every pattern carries its own character. Whether it’s clean geometry, flowing lines, or a symbol that means something only to you, your vision becomes part of the piece — welded, finished, and made to last as long as the memories shared around it.</p>
 
-<script>
-  // Fade transition for new buttons
-  document.querySelectorAll('.btn').forEach(btn => {
-    btn.addEventListener('click', e => {
-      const href = btn.getAttribute('href');
-      if (href && !href.startsWith('#') && !href.startsWith('mailto:')) {
-        e.preventDefault();
-        document.body.style.transition = "opacity 0.6s ease";
-        document.body.style.opacity = "0";
-        setTimeout(() => { window.location = href; }, 600);
-      }
-    });
-  });
-</script>
-
+      <div style="text-align:center; margin-top:2.5rem;">
+        <a href="gallery.html" class="btn">View Gallery</a>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -225,7 +284,7 @@
   </footer>
 
   <script>
-    // Fade transitions
+    // Fade transitions for all navigation and buttons
     document.querySelectorAll('.btn, a').forEach(link => {
       link.addEventListener('click', e => {
         const href = link.getAttribute('href');
@@ -233,9 +292,7 @@
           e.preventDefault();
           document.body.style.transition = "opacity 0.6s ease";
           document.body.style.opacity = "0";
-          setTimeout(() => {
-            window.location = href;
-          }, 600);
+          setTimeout(() => window.location = href, 600);
         }
       });
     });
