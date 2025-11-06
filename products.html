@@ -13,14 +13,14 @@
     }
 
     body {
-  background: #0d0d0d url('assets/images/brushed-metal.png') repeat;
-  background-size: cover;
-  color: #e0e0e0;
-  font-family: 'Orbitron', sans-serif;
-  min-height: 100vh;
-  opacity: 1;
-  transition: opacity 0.6s ease;
-}
+      background: #0d0d0d url('assets/images/brushed-metal.png') repeat;
+      background-size: cover;
+      color: #e0e0e0;
+      font-family: 'Orbitron', sans-serif;
+      min-height: 100vh;
+      opacity: 1;
+      transition: opacity 0.6s ease;
+    }
 
     header {
       text-align: center;
@@ -102,10 +102,90 @@
       color: #999;
       font-size: 0.85rem;
     }
+
+    /* Navigation Menu */
+    .nav-menu {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 1000;
+    }
+
+    .menu-logo {
+      position: relative;
+      display: inline-block;
+    }
+
+    .menu-logo img {
+      width: 60px;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease, filter 0.3s ease;
+      filter: drop-shadow(0 0 10px rgba(0,255,255,0.5));
+    }
+
+    .menu-logo img:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 15px rgba(0,255,255,0.8));
+    }
+
+    .menu-links {
+      list-style: none;
+      position: absolute;
+      top: 15px;
+      left: 70px;
+      display: flex;
+      gap: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.4s ease;
+    }
+
+    .menu-logo:hover .menu-links {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(0);
+    }
+
+    .menu-links li a {
+      color: #00ffff;
+      text-decoration: none;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    .menu-links li a:hover {
+      color: #ffffff;
+      text-shadow: 0 0 8px #00ffff;
+    }
+
+    .menu-links li {
+      transform: translateX(-15px);
+      transition: transform 0.3s ease;
+    }
+
+    .menu-logo:hover .menu-links li {
+      transform: translateX(0);
+    }
   </style>
 </head>
 
 <body>
+  <!-- Navigation -->
+  <nav class="nav-menu">
+    <div class="menu-logo">
+      <img src="assets/images/colored-emblem-01a.png" alt="ChippyCraft Icon" class="menu-icon">
+      <ul class="menu-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <header>
     <h1>Hand-Made Infinity Furniture</h1>
   </header>
@@ -113,13 +193,13 @@
   <main class="products">
     <div class="card">
       <h2>Epoxy Tables</h2>
-      <p>Custom-welded steel infinity frames and made-to-order epoxy art. Each piece is designed for an indoor modern- industrial, floating aesthetic.</p>
+      <p>Custom-welded steel infinity frames and made-to-order epoxy art. Each piece is designed for an indoor modern-industrial, floating aesthetic.</p>
       <a href="epoxy-tables.html" class="btn">Learn More</a>
     </div>
 
     <div class="card">
       <h2>Fire-Patio Tables</h2>
-      <p>Using the same Infinity frame design for outdoor seating. Customize each side each side with symbols, patterns, and even pictures!</p>
+      <p>Using the same Infinity frame design for outdoor seating. Customize each side with symbols, patterns, and even pictures!</p>
       <a href="fire-patio-tables.html" class="btn">Learn More</a>
     </div>
 
@@ -139,30 +219,28 @@
   <footer>
     © 2025 ChippyCraft LLC — All Rights Reserved
   </footer>
-  
-  <script>
-  // Fade out when clicking any product button
-  document.querySelectorAll('.btn').forEach(btn => {
-    btn.addEventListener('click', e => {
-      if (btn.getAttribute('href') && btn.getAttribute('href') !== '#') {
-        e.preventDefault();
-        document.body.style.transition = "opacity 0.6s ease";
-        document.body.style.opacity = "0";
-        setTimeout(() => {
-          window.location = btn.getAttribute('href');
-        }, 600);
-      }
-    });
-  });
 
-  // Fade in when the page loads
-  window.addEventListener('load', () => {
-    document.body.style.opacity = "0";
-    setTimeout(() => {
-      document.body.style.transition = "opacity 0.8s ease";
-      document.body.style.opacity = "1";
-    }, 50);
-  });
-</script>
+  <script>
+    // Fade transitions for all navigation and buttons
+    document.querySelectorAll('.btn, a').forEach(link => {
+      link.addEventListener('click', e => {
+        const href = link.getAttribute('href');
+        if (href && !href.startsWith('#') && !href.startsWith('mailto:')) {
+          e.preventDefault();
+          document.body.style.transition = "opacity 0.6s ease";
+          document.body.style.opacity = "0";
+          setTimeout(() => window.location = href, 600);
+        }
+      });
+    });
+
+    window.addEventListener('load', () => {
+      document.body.style.opacity = "0";
+      setTimeout(() => {
+        document.body.style.transition = "opacity 0.8s ease";
+        document.body.style.opacity = "1";
+      }, 50);
+    });
+  </script>
 </body>
 </html>
