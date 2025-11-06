@@ -11,6 +11,25 @@
     <h1>ChippyCraft Gallery</h1>
     <p class="subtitle">Where engineering meets art</p>
   </header>
+  
+<div style="text-align:center; margin-top:2.5rem;">
+  <a href="products.html" class="btn">Back to Products</a>
+</div>
+
+<script>
+  // Fade transition for navigation
+  document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      const href = btn.getAttribute('href');
+      if (href && !href.startsWith('#') && !href.startsWith('mailto:')) {
+        e.preventDefault();
+        document.body.style.transition = "opacity 0.6s ease";
+        document.body.style.opacity = "0";
+        setTimeout(() => { window.location = href; }, 600);
+      }
+    });
+  });
+</script>
 
   <main id="gallery"></main>
 
