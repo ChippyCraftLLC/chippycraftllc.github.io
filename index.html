@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ChippyCraft LLC</title>
+
+  <!-- Orbitron font -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
     /* Global reset */
     * {
@@ -19,8 +23,13 @@
       scroll-behavior: smooth;
       background: #0d0d0d;
       overflow-x: hidden;
-      margin: 0;
-overflow-y: hidden;
+      overflow-y: hidden;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+
+    body.loaded {
+      opacity: 1;
     }
 
     /* Background with brushed metal + light shimmer */
@@ -34,7 +43,6 @@ overflow-y: hidden;
       background: 
         linear-gradient(120deg, rgba(255,255,255,0.05), rgba(0,0,0,0.1) 50%, rgba(255,255,255,0.05)),
         url('assets/images/brushed-metal.png');
-
       background-size: cover;
       animation: shimmer 10s linear infinite;
       z-index: -1;
@@ -62,12 +70,11 @@ overflow-y: hidden;
     }
 
     .logo {
-  max-width: 550px;       /* Bigger logo */
-  width: 90%;             /* Expands proportionally on smaller screens */
-  filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.3)); /* Softer glow */
-  animation: logoFade 2s ease-out;
-}
-
+      max-width: 550px;
+      width: 90%;
+      filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.3));
+      animation: logoFade 2s ease-out;
+    }
 
     @keyframes logoFade {
       from { opacity: 0; transform: scale(0.9); }
@@ -102,47 +109,29 @@ overflow-y: hidden;
       color: #0d0d0d;
       box-shadow: 0 0 20px #00ffff;
     }
-
-    section {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #777;
-      font-size: 1.2rem;
-      background: #0d0d0d;
-    }
   </style>
-body {
-  opacity: 0;
-  transition: opacity 0.8s ease;
-}
-  body { opacity: 0; transition: opacity 0.6s ease; }
-body.loaded {
-  opacity: 1;
-}
-
-  <!-- Orbitron font -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
 </head>
-  
-<script>
-  window.addEventListener('load', () => document.body.classList.add('loaded'));
-</script>
 
 <body>
   <div class="hero">
     <img src="assets/images/Business Card 01 colored.png" alt="ChippyCraft LLC Logo" class="logo" />
     <p class="tagline">Modern-industrial, handcrafted infinity furniture. Functional art for inside and out.</p>
     <a href="about.html" class="enter-button" onclick="fadeAndRedirect(event)">Enter Website</a>
+  </div>
 
-<script>
-  function fadeAndRedirect(event) {
-    event.preventDefault();
-    document.body.style.transition = "opacity 0.6s ease";
-    document.body.style.opacity = "0";
-    setTimeout(() => {
-      window.location = event.target.href;
-    }, 600);
-  }
-</script>
+  <script>
+    // Fade in on load
+    window.addEventListener('load', () => document.body.classList.add('loaded'));
+
+    // Fade out before redirect
+    function fadeAndRedirect(event) {
+      event.preventDefault();
+      document.body.style.transition = "opacity 0.6s ease";
+      document.body.style.opacity = "0";
+      setTimeout(() => {
+        window.location = event.target.href;
+      }, 600);
+    }
+  </script>
+</body>
+</html>
