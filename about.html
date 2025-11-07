@@ -159,22 +159,26 @@
     }
 
     .menu-links {
-      list-style: none;
-      position: absolute;
-      top: 15px;
-      left: 70px;
-      display: flex;
-      gap: 1.5rem;
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.4s ease;
-    }
+  list-style: none;
+  position: absolute;
+  top: 15px;
+  left: 70px;
+  display: flex;
+  gap: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease;
+  padding-left: 1rem;         /* adds hover buffer */
+  background: rgba(0,0,0,0.2); /* transparent layer behind links (optional) */
+  backdrop-filter: blur(2px); /* subtle frosted feel */
+}
 
-    .menu-logo:hover .menu-links {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateX(0);
-    }
+    .menu-logo:hover .menu-links,
+.menu-links:hover {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+}
 
     .menu-links li a {
       color: #00ffff;
