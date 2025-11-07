@@ -48,23 +48,27 @@
       z-index: 1000;
     }
 
-    .menu-logo {
-      position: relative;
-      display: inline-block;
-    }
+   .menu-logo {
+  position: relative;
+  display: inline-block;
+  padding: 0.5rem;           /* keeps small buffer without enlarging the logo */
+  margin: -0.5rem;           /* negates the visible padding so logo stays same size */
+}
 
-    .menu-logo img {
-      width: 60px;
-      height: auto;
-      cursor: pointer;
-      transition: transform 0.3s ease, filter 0.3s ease;
-      filter: drop-shadow(0 0 10px rgba(0,255,255,0.5));
-    }
+/* logo image itself */
+.menu-logo img {
+  width: 60px;               /* keep your original size */
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: drop-shadow(0 0 10px rgba(0,255,255,0.5));
+  display: block;
+}
 
-    .menu-logo img:hover {
-      transform: scale(1.05);
-      filter: drop-shadow(0 0 15px rgba(0,255,255,0.8));
-    }
+.menu-logo img:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 15px rgba(0,255,255,0.8));
+}
 
     .menu-links {
       list-style: none;
