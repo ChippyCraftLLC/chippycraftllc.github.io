@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ChippyCraft | Contact</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
-
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -35,48 +34,68 @@
     }
 
     main {
-      max-width: 900px;
+      max-width: 700px;
       margin: 3rem auto;
       padding: 0 2rem;
       text-align: center;
       line-height: 1.6;
     }
 
-    p {
-      font-size: 1rem;
-      color: #d0d0d0;
-      margin-bottom: 1.5rem;
+    .intro {
+      margin-bottom: 2rem;
+      animation: fadeIn 2s ease-in-out;
     }
 
-    .contact-info {
+    .intro p {
+      color: #d0d0d0;
+      font-size: 1rem;
+      margin: 0 auto;
+      max-width: 600px;
+    }
+
+    form {
       background: rgba(20,20,20,0.85);
       border: 1px solid rgba(0,255,255,0.2);
       border-radius: 10px;
       padding: 2rem;
       box-shadow: 0 0 15px rgba(0,255,255,0.15);
-      margin-bottom: 2rem;
+      text-align: left;
     }
 
-    .contact-info h2 {
+    label {
+      display: block;
       color: #00ffff;
-      margin-bottom: 1rem;
       text-transform: uppercase;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      margin-top: 1rem;
     }
 
-    .contact-info a {
-      color: #00ffff;
-      text-decoration: none;
-      transition: color 0.3s ease, text-shadow 0.3s ease;
+    input, textarea {
+      width: 100%;
+      padding: 0.8rem;
+      background: rgba(0,0,0,0.6);
+      border: 1px solid rgba(0,255,255,0.4);
+      border-radius: 4px;
+      color: #e0e0e0;
+      font-family: inherit;
+      font-size: 1rem;
     }
 
-    .contact-info a:hover {
-      color: #ffffff;
-      text-shadow: 0 0 8px #00ffff;
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #00ffff;
+      box-shadow: 0 0 10px #00ffff;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
     }
 
     .btn {
       display: inline-block;
-      margin-top: 2.5rem;
+      margin-top: 2rem;
       padding: 0.8rem 2rem;
       border: 2px solid #00ffff;
       color: #00ffff;
@@ -87,6 +106,8 @@
       border-radius: 4px;
       transition: all 0.3s ease;
       font-weight: 500;
+      text-align: center;
+      cursor: pointer;
     }
 
     .btn:hover {
@@ -103,6 +124,11 @@
       color: #999;
       font-size: 0.85rem;
       margin-top: 4rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* --- Navigation Menu --- */
@@ -193,18 +219,25 @@
   </header>
 
   <main>
-    <p>Want to start a project or get a quote on a custom build? Reach out — I’d love to hear your ideas.</p>
-
-    <section class="contact-info">
-      <h2>Get in Touch</h2>
-      <p>Email: <a href="mailto:chippycraftllc@gmail.com">chippycraftllc@gmail.com</a></p>
-      <p>Instagram: <a href="https://www.instagram.com/chippycraftllc" target="_blank">@chippycraftllc</a></p>
-      <p>Facebook: <a href="https://www.facebook.com/chippycraftllc" target="_blank">facebook.com/chippycraftllc</a></p>
+    <section class="intro">
+      <p>Let’s build something modern, industrial, and one-of-a-kind.  
+         Send a message below, and let’s start designing your next infinity creation.</p>
     </section>
 
-    <p>Every ChippyCraft piece starts with a conversation — let’s bring your vision to life.</p>
+    <form action="mailto:chippycraftllc@gmail.com" method="POST" enctype="text/plain">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Your name" required>
 
-    <div style="text-align:center;">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Tell us about your project idea..." required></textarea>
+
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+
+    <div style="text-align:center; margin-top: 1.5rem;">
       <a href="products.html" class="btn">Back to Products</a>
     </div>
   </main>
@@ -214,7 +247,7 @@
   </footer>
 
   <script>
-    // Fade transitions for all navigation and buttons
+    // Fade transition
     document.querySelectorAll('.btn, a').forEach(link => {
       link.addEventListener('click', e => {
         const href = link.getAttribute('href');
@@ -222,7 +255,9 @@
           e.preventDefault();
           document.body.style.transition = "opacity 0.6s ease";
           document.body.style.opacity = "0";
-          setTimeout(() => window.location = href, 600);
+          setTimeout(() => {
+            window.location = href;
+          }, 600);
         }
       });
     });
