@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ChippyCraft | Contact</title>
+  <title>ChippyCraft | Fire Patio Tables</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -34,68 +35,16 @@
     }
 
     main {
-      max-width: 700px;
+      max-width: 900px;
       margin: 3rem auto;
       padding: 0 2rem;
       text-align: center;
       line-height: 1.6;
     }
 
-    .intro {
-      margin-bottom: 2rem;
-      animation: fadeIn 2s ease-in-out;
-    }
-
-    .intro p {
-      color: #d0d0d0;
-      font-size: 1rem;
-      margin: 0 auto;
-      max-width: 600px;
-    }
-
-    form {
-      background: rgba(20,20,20,0.85);
-      border: 1px solid rgba(0,255,255,0.2);
-      border-radius: 10px;
-      padding: 2rem;
-      box-shadow: 0 0 15px rgba(0,255,255,0.15);
-      text-align: left;
-    }
-
-    label {
-      display: block;
-      color: #00ffff;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      margin-bottom: 0.5rem;
-      margin-top: 1rem;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 0.8rem;
-      background: rgba(0,0,0,0.6);
-      border: 1px solid rgba(0,255,255,0.4);
-      border-radius: 4px;
-      color: #e0e0e0;
-      font-family: inherit;
-      font-size: 1rem;
-    }
-
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: #00ffff;
-      box-shadow: 0 0 10px #00ffff;
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 120px;
-    }
-
     .btn {
       display: inline-block;
-      margin-top: 2rem;
+      margin-top: 2.5rem;
       padding: 0.8rem 2rem;
       border: 2px solid #00ffff;
       color: #00ffff;
@@ -106,8 +55,6 @@
       border-radius: 4px;
       transition: all 0.3s ease;
       font-weight: 500;
-      text-align: center;
-      cursor: pointer;
     }
 
     .btn:hover {
@@ -126,143 +73,108 @@
       margin-top: 4rem;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* --- Navigation Menu --- */
+    .nav-menu {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 1000;
+    }
+
+    .menu-logo {
+      position: relative;
+      display: inline-block;
+    }
+
+    .menu-logo img {
+      width: 60px;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease, filter 0.3s ease;
+      filter: drop-shadow(0 0 10px rgba(0,255,255,0.5));
+    }
+
+    .menu-logo img:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 15px rgba(0,255,255,0.8));
+    }
+
+    .menu-links {
+      list-style: none;
+      position: absolute;
+      top: 15px;
+      left: 70px;
+      display: flex;
+      gap: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.4s ease;
+    }
+
+    .menu-logo:hover .menu-links {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(0);
+    }
+
+    .menu-links li a {
+      color: #00ffff;
+      text-decoration: none;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    .menu-links li a:hover {
+      color: #ffffff;
+      text-shadow: 0 0 8px #00ffff;
+    }
+
+    .menu-links li {
+      transform: translateX(-15px);
+      transition: transform 0.3s ease;
+    }
+
+    .menu-logo:hover .menu-links li {
+      transform: translateX(0);
     }
   </style>
 </head>
 
 <body>
   <!-- Navigation Menu -->
-<nav class="nav-menu">
-  <div class="menu-logo">
-    <img src="assets/images/colored-emblem-01a.png" alt="ChippyCraft Icon" class="menu-icon">
-    <ul class="menu-links">
-      <li><a href="about.html">About</a></li>
-      <li><a href="products.html">Products</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </div>
-</nav>
+  <nav class="nav-menu">
+    <div class="menu-logo">
+      <img src="assets/images/colored-emblem-01a.png" alt="ChippyCraft Icon" class="menu-icon">
+      <ul class="menu-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
   <header>
-    <!-- Navigation Menu -->
-<nav class="nav-menu">
-  <div class="menu-logo">
-    <img src="assets/images/colored-emblem-01a.png" alt="ChippyCraft Icon" class="menu-icon">
-    <ul class="menu-links">
-      <li><a href="about.html">About</a></li>
-      <li><a href="products.html">Products</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </div>
-</nav>
-/* Navigation Menu */
-.nav-menu {
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
-  z-index: 1000;
-}
-
-.menu-logo {
-  position: relative;
-  display: inline-block;
-}
-
-.menu-logo img {
-  width: 60px;
-  height: auto;
-  cursor: pointer;
-  transition: transform 0.3s ease, filter 0.3s ease;
-  filter: drop-shadow(0 0 10px rgba(0,255,255,0.5));
-}
-
-.menu-logo img:hover {
-  transform: scale(1.05);
-  filter: drop-shadow(0 0 15px rgba(0,255,255,0.8));
-}
-
-.menu-links {
-  list-style: none;
-  position: absolute;
-  top: 15px;
-  left: 70px;
-  display: flex;
-  gap: 1.5rem;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.4s ease;
-}
-
-.menu-logo:hover .menu-links {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateX(0);
-}
-
-.menu-links li a {
-  color: #00ffff;
-  text-decoration: none;
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-
-.menu-links li a:hover {
-  color: #ffffff;
-  text-shadow: 0 0 8px #00ffff;
-}
-
-.menu-links li {
-  transform: translateX(-15px);
-  transition: transform 0.3s ease;
-}
-
-.menu-logo:hover .menu-links li {
-  transform: translateX(0);
-}
-
-<style>
-  /* Navigation Styling */
-  .nav-menu {
-    position: fixed;
-    top: 1rem;
-    left: 1rem;
-    z-index: 1000;
-  }
-
-  .menu-logo {
-    position: relative;
-    display
-
-    <h1>Contact ChippyCraft</h1>
+    <h1>Fire Patio Tables</h1>
   </header>
 
   <main>
-    <section class="intro">
-      <p>Let’s build something modern, industrial, and one-of-a-kind.  
-         Send a message below, and let’s start designing your next infinity creation.</p>
-    </section>
+    <p>
+      Bring the warmth and artistry of ChippyCraft outdoors with our <strong>Fire Patio Tables</strong>. Each piece combines 
+      engineered precision with handcrafted design, turning every gathering into an experience. 
+      Customize your table with sheet metal art panels, color lighting, and infinity-inspired details.
+    </p>
 
-    <form action="mailto:chippycraftllc@gmail.com" method="POST" enctype="text/plain">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" placeholder="Your name" required>
+    <p>
+      Designed to withstand the elements, these tables feature durable finishes, precision welds, 
+      and an optional integrated thermoelectric lighting system for the perfect ambient glow.
+    </p>
 
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="you@example.com" required>
-
-      <label for="message">Message</label>
-      <textarea id="message" name="message" placeholder="Tell us about your project idea..." required></textarea>
-
-      <button type="submit" class="btn">Send Message</button>
-    </form>
-
-    <div style="text-align:center; margin-top: 1.5rem;">
-      <a href="products.html" class="btn">Back to Products</a>
+    <div style="text-align:center;">
+      <a href="contact.html" class="btn">Contact to Order</a>
     </div>
   </main>
 
@@ -271,7 +183,7 @@
   </footer>
 
   <script>
-    // Fade transition
+    // Fade transitions for all navigation and buttons
     document.querySelectorAll('.btn, a').forEach(link => {
       link.addEventListener('click', e => {
         const href = link.getAttribute('href');
@@ -279,9 +191,7 @@
           e.preventDefault();
           document.body.style.transition = "opacity 0.6s ease";
           document.body.style.opacity = "0";
-          setTimeout(() => {
-            window.location = href;
-          }, 600);
+          setTimeout(() => window.location = href, 600);
         }
       });
     });
