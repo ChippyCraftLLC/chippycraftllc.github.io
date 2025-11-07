@@ -173,11 +173,12 @@
   backdrop-filter: blur(2px); /* subtle frosted feel */
 }
 
-    .menu-logo:hover .menu-links {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateX(0);
-    }
+ .menu-logo:hover .menu-links,
+.menu-links:hover {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+}
 
     .menu-links li a {
       color: #00ffff;
