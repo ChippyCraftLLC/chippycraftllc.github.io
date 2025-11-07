@@ -137,14 +137,14 @@
       position: fixed;
       top: 1rem;
       left: 1rem;
-      z-index: 1000;
+      z-index: 100; /* menu sits above page but not blocking */
     }
 
     .menu-logo {
       position: relative;
       display: inline-block;
-      padding: 0.5rem;
-      margin: -0.5rem;
+      padding: 0.5rem;   /* small hover buffer */
+      margin: -0.5rem;   /* keeps visual size the same */
     }
 
     .menu-logo img {
@@ -171,17 +171,18 @@
       gap: 1.5rem;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.4s ease, transform 0.4s ease;
+      transition: opacity 0.25s ease;
       background: rgba(0,0,0,0.25);
       padding: 0.5rem 1rem;
       border-radius: 8px;
+      z-index: 200; /* above logo, below main content */
     }
 
+    /* keep menu visible while hovering logo OR links */
     .menu-logo:hover .menu-links,
     .menu-links:hover {
       opacity: 1;
       pointer-events: auto;
-      transform: translateX(0);
     }
 
     .menu-links li a {
@@ -199,8 +200,8 @@
     }
 
     .menu-links li {
-      transform: translateX(-15px);
-      transition: transform 0.3s ease;
+      transform: translateX(-12px);
+      transition: transform 0.25s ease;
     }
 
     .menu-logo:hover .menu-links li,
@@ -229,8 +230,63 @@
   </header>
 
   <main>
-    <!-- all your content unchanged -->
-    <!-- ... -->
+    <section class="intro">
+      <p>Where engineering meets art — ChippyCraft creates one-of-a-kind, modern-industrial furniture pieces that blend metal and epoxy into designs unlike anything else out there.</p>
+    </section>
+
+    <section class="story">
+      <h2>Meet the Maker</h2>
+      <p>"I'm Chippy and this is my Craft! Allow me to introduce myself. I’m <strong>Ryan "Chippy" Bostrom</strong>, owner of <strong>ChippyCraft LLC</strong>.  
+      I’m currently a student double-majoring in <em>Engineering Technology</em> and <em>Business Management</em>. I spent about a decade in the trades — welding and construction straight out of high school until, after years of working for someone else, I realized it was time to take my skills, ideas, and ambition into my own hands and start building the future I actually wanted.</p>
+
+      <p>That drive became <strong>ChippyCraft</strong> — a studio where craftsmanship meets engineering. Where I turn raw materials into functional art. Every piece is personal — designed, welded, and finished by hand, a true reflection of the maker behind the hood.</p>
+    </section>
+
+    <section class="story">
+      <h2>Our Story</h2>
+      <p>ChippyCraft started from the belief that cookie-cutter furniture is <strong>boring</strong>. Our vision is to revamp living spaces — inside and out. Every project is an opportunity to reimagine what’s possible when engineering and art collide.</p>
+
+      <p>Our tables and chairs are built to <strong>defy gravity</strong>, merging raw steel and smooth epoxy into bold, modern-industrial designs that command attention. The illusionary framing always leads to a double-take — <em>“Is that table floating?!”</em></p>
+
+      <p>ChippyCraft isn’t mass-produced or factory-fabricated. It’s unapologetically sophisticated, artistic, and sleek. Every piece carries the fingerprints of its maker — a blend of grit, creativity, and technical know-how that turns the mundane into something extraordinary.</p>
+    </section>
+
+    <section class="gallery">
+      <img src="assets/images/sample1.jpg" alt="Workshop example 1">
+      <img src="assets/images/sample2.jpg" alt="Workshop example 2">
+      <img src="assets/images/sample3.jpg" alt="Workshop example 3">
+    </section>
+
+    <p style="text-align:center; margin-top: 1.5rem;">Built to last. Designed to impress. Let’s get crafty.</p>
+
+    <div style="text-align:center;">
+      <a href="products.html" class="btn">View Products</a>
+    </div>
+
+    <section class="craft" style="margin-top:3rem;">
+      <h2>The Art Behind the Craft</h2>
+      <p style="text-align:center; max-width:700px; margin:0 auto 2rem auto;">
+        I invite you behind the curtain to understand just what defines ChippyCraft and see where the line blurs between furniture and art.
+      </p>
+
+      <h3 style="color:#00ffff; text-align:center; text-transform:uppercase; margin-top:1.5rem;">Epoxy Art</h3>
+      <p>ChippyCraft was never meant to just build furniture — it was meant to build stories. <strong>You</strong> bring the imagination behind every new design, and the final product becomes a collaboration between maker and owner. Together, <strong>we</strong> create personal pieces that <strong>you</strong> have breathed into life.</p>
+
+      <p>Whether it’s embedding the ashes of a beloved pet, preserving a flower from your wedding day, or immortalizing a symbol that means something only to you — nearly anything can be suspended in clear epoxy, sealed forever in light and time. <strong>Each tabletop is a blank space to capture something timeless.</strong></p>
+
+      <p>My specialty is what I call <strong>metal calligraphy</strong>. It uses thin strips of hand-shaped steel that twist and curve into symbols, lettering, or abstract forms. These lines act like the framework of stained glass, but instead of holding glass, they cradle color — translucent epoxy poured into each shape, one at a time, until the design comes alive.</p>
+
+      <h3 style="color:#00ffff; text-align:center; text-transform:uppercase; margin-top:2.5rem;">Sheet Metal Art</h3>
+      <p>Your story doesn’t have to stop indoors — take it outside. Each patio table can be fitted with custom sheet-metal panels that turn structure into statement. From bold patriotic emblems to intricate Celtic knotwork, every CNC-plasma-cut design gives your table its own identity — unmistakable, personal, and built to stand the elements.</p>
+
+      <p>Every panel is powder-coated for durability and can be paired with a backdrop that defines your style: a second sheet of metal for a crisp, modern contrast, or a stained wood backing for a warmer, rustic feel that feels as welcoming as the firelight.</p>
+
+      <p>Every pattern carries its own character. Whether it’s clean geometry, flowing lines, or a symbol that means something only to you, your vision becomes part of the piece — welded, finished, and made to last as long as the memories shared around it.</p>
+
+      <div style="text-align:center; margin-top:2.5rem;">
+        <a href="gallery.html" class="btn">View Gallery</a>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -238,6 +294,7 @@
   </footer>
 
   <script>
+    // Fade transitions for all navigation and buttons
     document.querySelectorAll('.btn, a').forEach(link => {
       link.addEventListener('click', e => {
         const href = link.getAttribute('href');
@@ -250,12 +307,9 @@
       });
     });
 
+    // Ensure page starts visible
     window.addEventListener('load', () => {
       document.body.style.opacity = "1";
-      setTimeout(() => {
-        document.body.style.transition = "opacity 0.8s ease";
-        document.body.style.opacity = "1";
-      }, 50);
     });
   </script>
 </body>
