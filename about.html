@@ -54,6 +54,22 @@
       margin: 1rem auto;
     }
 
+    /* Photo styling for your intro */
+    .intro-photo {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .intro-photo img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #00ffff;
+      box-shadow: 0 0 12px rgba(0,255,255,0.4);
+    }
+
     .story, .craft {
       background: rgba(20,20,20,0.85);
       border: 1px solid rgba(0,255,255,0.2);
@@ -137,14 +153,14 @@
       position: fixed;
       top: 1rem;
       left: 1rem;
-      z-index: 100; /* menu sits above page but not blocking */
+      z-index: 100;
     }
 
     .menu-logo {
       position: relative;
       display: inline-block;
-      padding: 0.5rem;   /* small hover buffer */
-      margin: -0.5rem;   /* keeps visual size the same */
+      padding: 0.5rem;
+      margin: -0.5rem;
     }
 
     .menu-logo img {
@@ -175,10 +191,9 @@
       background: rgba(0,0,0,0.25);
       padding: 0.5rem 1rem;
       border-radius: 8px;
-      z-index: 200; /* above logo, below main content */
+      z-index: 200;
     }
 
-    /* keep menu visible while hovering logo OR links */
     .menu-logo:hover .menu-links,
     .menu-links:hover {
       opacity: 1;
@@ -231,6 +246,9 @@
 
   <main>
     <section class="intro">
+      <div class="intro-photo">
+        <img src="assets/images/ryan-bostrom.jpg" alt="Ryan Bostrom, Owner of ChippyCraft LLC">
+      </div>
       <p>Where engineering meets art — ChippyCraft creates one-of-a-kind, modern-industrial furniture pieces that blend metal and epoxy into designs unlike anything else out there.</p>
     </section>
 
@@ -278,10 +296,10 @@
       <p>Every pattern carries its own character. Whether it’s clean geometry, flowing lines, or a symbol that means something only to you, your vision becomes part of the piece — welded, finished, and made to last as long as the memories shared around it.</p>
 
       <section class="gallery">
-      <img src="assets/images/sample1.jpg" alt="Workshop example 1">
-      <img src="assets/images/sample2.jpg" alt="Workshop example 2">
-      <img src="assets/images/sample3.jpg" alt="Workshop example 3">
-    </section>
+        <img src="assets/gallery/sample1.jpg" alt="Workshop example 1">
+        <img src="assets/gallery/sample2.jpg" alt="Workshop example 2">
+        <img src="assets/gallery/sample3.jpg" alt="Workshop example 3">
+      </section>
       
       <div style="text-align:center; margin-top:2.5rem;">
         <a href="gallery.html" class="btn">View Gallery</a>
@@ -294,7 +312,6 @@
   </footer>
 
   <script>
-    // Fade transitions for all navigation and buttons
     document.querySelectorAll('.btn, a').forEach(link => {
       link.addEventListener('click', e => {
         const href = link.getAttribute('href');
@@ -307,7 +324,6 @@
       });
     });
 
-    // Ensure page starts visible
     window.addEventListener('load', () => {
       document.body.style.opacity = "1";
     });
