@@ -1,119 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ChippyCraft | Gallery</title>
-  <link rel="stylesheet" href="assets/css/gallery.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
-
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      font-family: 'Orbitron', sans-serif;
       background: #0d0d0d url('assets/images/brushed-metal.png') repeat;
       background-size: cover;
       color: #e0e0e0;
-      margin: 0;
+      font-family: 'Orbitron', sans-serif;
       min-height: 100vh;
-      opacity: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
       transition: opacity 0.6s ease;
     }
 
-    header {
-      text-align: center;
-      padding: 2rem 1rem 3rem 1rem;
-      border-bottom: 1px solid rgba(0,255,255,0.3);
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(4px);
-    }
-
-    header h1 {
+    h1 {
       color: #00ffff;
       font-size: 2rem;
+      margin-bottom: 1rem;
       text-transform: uppercase;
       letter-spacing: 2px;
     }
 
-    header .subtitle {
-      color: #aaa;
-      font-size: 1rem;
-      margin-top: 0.5rem;
-    }
-
-    /* Navigation Menu */
-    .nav-menu {
-      position: fixed;
-      top: 1rem;
-      left: 1rem;
-      z-index: 1000;
-    }
-
-   .menu-logo {
-  position: relative;
-  display: inline-block;
-  padding: 0.5rem;           /* keeps small buffer without enlarging the logo */
-  margin: -0.5rem;           /* negates the visible padding so logo stays same size */
-}
-
-/* logo image itself */
-.menu-logo img {
-  width: 60px;               /* keep your original size */
-  height: auto;
-  cursor: pointer;
-  transition: transform 0.3s ease, filter 0.3s ease;
-  filter: drop-shadow(0 0 10px rgba(0,255,255,0.5));
-  display: block;
-}
-
-.menu-logo img:hover {
-  transform: scale(1.05);
-  filter: drop-shadow(0 0 15px rgba(0,255,255,0.8));
-}
-
-    .menu-links {
-      list-style: none;
-      position: absolute;
-      top: 15px;
-      left: 70px;
-      display: flex;
-      gap: 1.5rem;
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.4s ease;
-    }
-
-    .menu-logo:hover .menu-links {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateX(0);
-    }
-
-    .menu-links li a {
-      color: #00ffff;
-      text-decoration: none;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: color 0.3s ease, text-shadow 0.3s ease;
-    }
-
-    .menu-links li a:hover {
-      color: #ffffff;
-      text-shadow: 0 0 8px #00ffff;
-    }
-
-    .menu-links li {
-      transform: translateX(-15px);
-      transition: transform 0.3s ease;
-    }
-
-    .menu-logo:hover .menu-links li {
-      transform: translateX(0);
+    p {
+      max-width: 700px;
+      color: #d0d0d0;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+      font-size: 1.1rem;
     }
 
     .btn {
       display: inline-block;
-      margin-top: 2.5rem;
+      margin: 1rem;
       padding: 0.8rem 2rem;
       border: 2px solid #00ffff;
       color: #00ffff;
@@ -134,23 +62,96 @@
 
     footer {
       text-align: center;
-      padding: 1.5rem;
+      padding: 1rem;
       border-top: 1px solid rgba(0,255,255,0.2);
-      background: rgba(0,0,0,0.6);
       color: #999;
       font-size: 0.85rem;
-      margin-top: 4rem;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.6);
+    }
+
+    /* Navigation Menu */
+    .nav-menu {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 100;
+    }
+
+    .menu-logo {
+      position: relative;
+      display: inline-block;
+      padding: 0.5rem;
+      margin: -0.5rem;
+    }
+
+    .menu-logo img {
+      width: 60px;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease, filter 0.3s ease;
+      filter: drop-shadow(0 0 10px rgba(0,255,255,0.5));
+      display: block;
+    }
+
+    .menu-logo img:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 15px rgba(0,255,255,0.8));
+    }
+
+    .menu-links {
+      list-style: none;
+      position: absolute;
+      top: 0;
+      left: 70px;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      background: rgba(0,0,0,0.25);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      z-index: 200;
+    }
+
+    .menu-logo:hover .menu-links,
+    .menu-links:hover {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .menu-links li a {
+      color: #00ffff;
+      text-decoration: none;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    .menu-links li a:hover {
+      color: #ffffff;
+      text-shadow: 0 0 8px #00ffff;
+    }
+
+    .menu-links li {
+      transform: translateX(-12px);
+      transition: transform 0.25s ease;
+    }
+
+    .menu-logo:hover .menu-links li,
+    .menu-links:hover li {
+      transform: translateX(0);
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <h1>ChippyCraft Gallery</h1>
-    <p class="subtitle">Where engineering meets art</p>
-  </header>
-
-  <!-- Navigation Menu -->
+  <!-- Navigation -->
   <nav class="nav-menu">
     <div class="menu-logo">
       <img src="assets/images/colored-emblem-01a.png" alt="ChippyCraft Icon" class="menu-icon">
@@ -163,9 +164,16 @@
     </div>
   </nav>
 
-  <main id="gallery"></main>
+  <!-- Work in Progress Message -->
+  <h1>Gallery — Work in Progress</h1>
+  <p>Our gallery is under construction! Soon, you’ll be able to explore albums showcasing 
+  <strong>metal calligraphy</strong>, <strong>sheet metal art</strong>, and <strong>finished tables & chairs</strong>.
+  Until then, check out our latest work and updates on social media:</p>
 
-  <div style="text-align:center; margin-top:2.5rem;">
+  <a href="https://www.facebook.com/ChippyCraftLLC" class="btn" target="_blank">Facebook</a>
+  <a href="https://www.instagram.com/ChippyCraftLLC" class="btn" target="_blank">Instagram</a>
+
+  <div style="margin-top: 2rem;">
     <a href="products.html" class="btn">Back to Products</a>
   </div>
 
@@ -173,14 +181,12 @@
     © 2025 ChippyCraft LLC — All Rights Reserved
   </footer>
 
-  <script src="assets/js/gallery.js"></script>
-
   <script>
-    // Fade transitions for all navigation and buttons
+    // Fade transitions
     document.querySelectorAll('.btn, a').forEach(link => {
       link.addEventListener('click', e => {
         const href = link.getAttribute('href');
-        if (href && !href.startsWith('#') && !href.startsWith('mailto:')) {
+        if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !link.hasAttribute('target')) {
           e.preventDefault();
           document.body.style.transition = "opacity 0.6s ease";
           document.body.style.opacity = "0";
@@ -190,11 +196,7 @@
     });
 
     window.addEventListener('load', () => {
-      document.body.style.opacity = "0";
-      setTimeout(() => {
-        document.body.style.transition = "opacity 0.8s ease";
-        document.body.style.opacity = "1";
-      }, 50);
+      document.body.style.opacity = "1";
     });
   </script>
 </body>
