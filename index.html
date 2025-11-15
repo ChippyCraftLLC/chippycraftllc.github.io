@@ -21,15 +21,6 @@
 
   <!-- Orbitron font -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
-  
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CLZJG4TBGR"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-CLZJG4TBGR');
-</script>
 
   <style>
     /* Global reset */
@@ -130,19 +121,14 @@
     <a href="about.html" class="enter-button" onclick="fadeAndRedirect(event)">Enter Website</a>
   </div>
 
- <script>
-  function fadeAndRedirect(event) {
-    event.preventDefault();
-    document.body.style.transition = "opacity 0.6s ease";
-    document.body.style.opacity = "0";
-    
-    const url = event.currentTarget.href;  // THIS IS RELIABLE
-    
-    setTimeout(() => {
-      window.location = url;
-    }, 600);
-  }
-</script>
-
+  <script>
+    // Fade out before redirect (keeps your nice exit transition)
+    function fadeAndRedirect(event) {
+      event.preventDefault();
+      document.body.style.transition = "opacity 0.6s ease";
+      document.body.style.opacity = "0";
+      setTimeout(() => { window.location = event.target.href; }, 600);
+    }
+  </script>
 </body>
 </html>
