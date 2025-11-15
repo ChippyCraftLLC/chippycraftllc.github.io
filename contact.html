@@ -261,10 +261,7 @@
     </section>
 
    <!-- Contact Form (Formspree Version) -->
-<form action="https://formspree.io/f/xpwkdajq" method="POST">
-  
-  <!-- Redirect to a thank-you page after submission -->
-  <input type="hidden" name="redirect" value="https://chippycraft.com/contact-success.html">
+<form id="contactForm">
 
   <!-- (Optional) Email subject line -->
   <input type="hidden" name="_subject" value="New Contact Form Message From ChippyCraft.com">
@@ -300,6 +297,31 @@
   <footer>
     © 2025 ChippyCraft LLC — All Rights Reserved
   </footer>
+<script>
+document.getElementById("contactForm").addEventListener("submit", async function(e) {
+  e.preventDefault(); // Stop regular submission
+
+  const form = e.target;
+  const data = new FormData(form);
+
+  try {
+    const response = await fetch("https://formspree.io/f/xpwkdajq", {
+      method: "POST",
+      body: data,
+      headers: { "Accept": "application/json" }
+    });
+
+    if (response.ok) {
+      // Redirect to your custom thank-you page
+      window.location.href = "https://chippycraft.com/contact-success.html";
+    } else {
+      alert("Oops! Something went wrong. Please try again.");
+    }
+  } catch (error) {
+    alert("Network error — please try again.");
+  }
+});
+</script>
 
   <script>
     // Fade transition
