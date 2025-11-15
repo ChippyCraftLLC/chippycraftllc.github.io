@@ -130,14 +130,19 @@
     <a href="about.html" class="enter-button" onclick="fadeAndRedirect(event)">Enter Website</a>
   </div>
 
-  <script>
-    // Fade out before redirect (keeps your nice exit transition)
-    function fadeAndRedirect(event) {
-      event.preventDefault();
-      document.body.style.transition = "opacity 0.6s ease";
-      document.body.style.opacity = "0";
-      setTimeout(() => { window.location = event.target.href; }, 600);
-    }
-  </script>
+ <script>
+  function fadeAndRedirect(event) {
+    event.preventDefault();
+    document.body.style.transition = "opacity 0.6s ease";
+    document.body.style.opacity = "0";
+    
+    const url = event.currentTarget.href;  // THIS IS RELIABLE
+    
+    setTimeout(() => {
+      window.location = url;
+    }, 600);
+  }
+</script>
+
 </body>
 </html>
