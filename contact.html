@@ -115,6 +115,28 @@
       color: #0d0d0d;
       box-shadow: 0 0 15px #00ffff;
     }
+    
+.submit-btn {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.8rem 2rem;
+  border: 2px solid #00ffff;
+  color: #00ffff;
+  background: transparent;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+}
+.submit-btn:hover {
+  background: #00ffff;
+  color: #0d0d0d;
+  box-shadow: 0 0 15px #00ffff;
+}
 
     footer {
       text-align: center;
@@ -259,7 +281,7 @@
   <label for="message">Message</label>
   <textarea id="message" name="message" placeholder="Tell us about your project idea..." required></textarea>
 
-  <button type="submit" class="btn">Send Message</button>
+  <button type="submit" class="submit-btn">Send Message</button>
 </form>
 
     
