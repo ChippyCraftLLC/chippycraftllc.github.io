@@ -4,26 +4,49 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Message Sent | ChippyCraft</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
       background: #0d0d0d url('assets/images/brushed-metal.png') repeat;
+      background-size: cover;
       color: #e0e0e0;
       font-family: 'Orbitron', sans-serif;
-      text-align: center;
-      padding: 5rem 2rem;
+      min-height: 100vh;
+      opacity: 1;
+      transition: opacity 0.6s ease;
     }
 
-    h1 {
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+      border-bottom: 1px solid rgba(0,255,255,0.3);
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+    }
+
+    header h1 {
+      font-size: 2rem;
       color: #00ffff;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      margin-bottom: 2rem;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+      text-align: center;
+      line-height: 1.6;
     }
 
     p {
+      font-size: 1.15rem;
       color: #d0d0d0;
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
+      margin: 1.5rem 0 2.5rem;
     }
 
     .btn {
@@ -31,10 +54,13 @@
       padding: 0.8rem 2rem;
       border: 2px solid #00ffff;
       color: #00ffff;
+      background: transparent;
       text-decoration: none;
       text-transform: uppercase;
+      letter-spacing: 1px;
       border-radius: 4px;
-      transition: 0.3s ease;
+      transition: all 0.3s ease;
+      font-weight: 500;
     }
 
     .btn:hover {
@@ -42,15 +68,141 @@
       color: #0d0d0d;
       box-shadow: 0 0 15px #00ffff;
     }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      border-top: 1px solid rgba(0,255,255,0.2);
+      background: rgba(0,0,0,0.6);
+      color: #999;
+      font-size: 0.85rem;
+      margin-top: 4rem;
+    }
+
+    /* --- Navigation Menu --- */
+    .nav-menu {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 1000;
+    }
+
+    .menu-logo {
+      position: relative;
+      display: inline-block;
+      padding: 0.5rem;
+      margin: -0.5rem;
+    }
+
+    .menu-logo img {
+      width: 60px;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease, filter 0.3s ease;
+      filter: drop-shadow(0 0 10px rgba(0,255,255,0.5));
+      display: block;
+    }
+
+    .menu-logo img:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 15px rgba(0,255,255,0.8));
+    }
+
+    .menu-links {
+      list-style: none;
+      position: absolute;
+      top: 15px;
+      left: 70px;
+      display: flex;
+      gap: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.4s ease;
+    }
+
+    .menu-logo:hover .menu-links {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .menu-links li a {
+      color: #00ffff;
+      text-decoration: none;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    .menu-links li a:hover {
+      color: #ffffff;
+      text-shadow: 0 0 8px #00ffff;
+    }
   </style>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CLZJG4TBGR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CLZJG4TBGR');
+  </script>
+
 </head>
+
 <body>
 
-  <h1>Message Sent</h1>
-  <p>Thanks for reaching out to ChippyCraft.  
-     We’ll get back to you shortly to start designing your next custom piece.</p>
+  <!-- Navigation Menu -->
+  <nav class="nav-menu">
+    <div class="menu-logo">
+      <img src="assets/images/colored-emblem-01a.png" alt="ChippyCraft Icon">
+      <ul class="menu-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
-  <a href="index.html" class="btn">Return Home</a>
+  <header>
+    <h1>Message Sent</h1>
+  </header>
+
+  <main>
+    <p>Thanks for reaching out to ChippyCraft.<br>
+       We’ll get back to you shortly to start designing your next custom piece.</p>
+
+    <a href="index.html" class="btn">Return Home</a>
+  </main>
+
+  <footer>
+    © 2025 ChippyCraft LLC — All Rights Reserved
+  </footer>
+
+  <!-- Fade Script -->
+  <script>
+    document.querySelectorAll('.btn, .menu-links a').forEach(link => {
+      link.addEventListener('click', e => {
+        const href = link.getAttribute('href');
+        if (href && !href.startsWith('#') && !href.startsWith('mailto:')) {
+          e.preventDefault();
+          document.body.style.opacity = "0";
+          setTimeout(() => {
+            window.location = href;
+          }, 600);
+        }
+      });
+    });
+
+    window.addEventListener('load', () => {
+      document.body.style.opacity = "0";
+      setTimeout(() => {
+        document.body.style.opacity = "1";
+      }, 50);
+    });
+  </script>
 
 </body>
 </html>
