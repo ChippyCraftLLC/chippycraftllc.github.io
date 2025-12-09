@@ -661,4 +661,121 @@
       </article>
 
       <article class="journal-entry">
-        <div class="
+        <div class="journal-header">
+          <div class="journal-date">December 8, 2025 (Monday)</div>
+          <div class="journal-title">TEG Harness and Waterproof Connector Integration</div>
+          <div class="journal-tag">[Design]</div>
+        </div>
+        <div class="journal-body">
+          <ul>
+            <li>Designed a three-TEG series harness to maximize the voltage supplied to the boost converter.</li>
+            <li>Integrated a waterproof connector pair so the TEG assembly could be detached from the electronics enclosure.</li>
+            <li>Verified correct polarity and series wiring from TEG1 positive to TEG3 negative.</li>
+            <li>Positioned the boost converter input lines through the harness to prepare for full system testing.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="journal-entry">
+        <div class="journal-header">
+          <div class="journal-date">December 8, 2025 (Monday)</div>
+          <div class="journal-title">LED Wiring and Early Power Troubleshooting</div>
+          <div class="journal-tag">[Build / Troubleshooting]</div>
+        </div>
+        <div class="journal-body">
+          <ul>
+            <li>Connected LED ground directly to the boost converter ground and routed the +12 V line through the relay and fuse.</li>
+            <li>Ran the LED data line from ESP32 GPIO18 to the LED strip DI input.</li>
+            <li>Observed that boost output sagged when the LED strip was connected, revealing an underpowered USB source.</li>
+            <li>Confirmed that wiring from the boost converter through the relay, fuse, and LED connector was correct.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="journal-entry">
+        <div class="journal-header">
+          <div class="journal-date">December 8, 2025 (Monday)</div>
+          <div class="journal-title">Confirming Circuit Integrity Before TEG Testing</div>
+          <div class="journal-tag">[Testing]</div>
+        </div>
+        <div class="journal-body">
+          <ul>
+            <li>Verified that the relay logic, LED wiring, and connector continuity were all functioning correctly.</li>
+            <li>Determined that the main issue was an inadequate test power source, not a wiring error.</li>
+            <li>Prepared to switch from USB-based testing to real TEG-based power input.</li>
+            <li>Ensured the system was ready for outdoor trials with the actual fire table setup.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="journal-entry">
+        <div class="journal-header">
+          <div class="journal-date">December 8, 2025 (Monday)</div>
+          <div class="journal-title">Outdoor TEG Trial Run in Harsh Conditions</div>
+          <div class="journal-tag">[Testing / Troubleshooting]</div>
+        </div>
+        <div class="journal-body">
+          <ul>
+            <li>Conducted the first outdoor TEG test during cold, windy conditions around the fire table.</li>
+            <li>Recorded very low TEG voltage due to a poor temperature differential between hot and cold sides.</li>
+            <li>Verified that the TEG wiring and harness remained correct despite weak output.</li>
+            <li>Concluded that environmental limitations, not design flaws, were causing the low electrical performance.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="journal-entry">
+        <div class="journal-header">
+          <div class="journal-date">December 9, 2025 (Tuesday)</div>
+          <div class="journal-title">Preparing Interim Demonstration and Next Steps</div>
+          <div class="journal-tag">[Planning / Documentation]</div>
+        </div>
+        <div class="journal-body">
+          <ul>
+            <li>Recognized the need to clearly explain thermal and environmental limitations in the project presentation.</li>
+            <li>Planned messaging that emphasizes working control electronics and wiring, with thermal design as the next optimization stage.</li>
+            <li>Prepared fallback options for showing LED behavior using an alternate 12 V source if TEG output is too low during demo.</li>
+            <li>Established that the current prototype is ready for inclusion in the Mechatronics E-Portfolio and on the ChippyCraft website.</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- END OF JOURNAL ENTRIES -->
+    </section>
+
+    <div class="btn-row">
+      <a href="mechatronics-eportfolio.html" class="btn">Back to E-Portfolio</a>
+      <a href="infinity-lighting.html" class="btn">Back to Infinity Lighting</a>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 ChippyCraft LLC — Thermo-Electric Infinity Table • Project Journal
+  </footer>
+
+  <script>
+    // Fade transitions for nav + buttons
+    document.querySelectorAll('a.btn, .menu-links a').forEach(link => {
+      link.addEventListener('click', e => {
+        const href = link.getAttribute('href');
+        if (href && !href.startsWith('#') && !href.startsWith('mailto:')) {
+          e.preventDefault();
+          document.body.style.transition = "opacity 0.6s ease";
+          document.body.style.opacity = "0";
+          setTimeout(() => {
+            window.location = href;
+          }, 600);
+        }
+      });
+    });
+
+    window.addEventListener('load', () => {
+      document.body.style.opacity = "0";
+      setTimeout(() => {
+        document.body.style.transition = "opacity 0.8s ease";
+        document.body.style.opacity = "1";
+      }, 40);
+    });
+  </script>
+</body>
+</html>
