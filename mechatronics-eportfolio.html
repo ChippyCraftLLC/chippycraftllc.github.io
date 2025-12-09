@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChippyCraft | Mechatronics E-Portfolio</title>
+
+  <!-- Standard Favicons -->
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+  <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png">
+
+  <!-- Apple Touch Icon (iOS Home Screen) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #050607;
+      --panel: #101217;
+      --accent: #00ffff;
+      --accent-soft: rgba(0, 255, 255, 0.18);
+      --text-main: #f4f4f4;
+      --text-muted: #b7b7b7;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top, #1a3b4a 0, #050607 45%),
+        radial-gradient(circle at bottom, #28163f 0, #050607 45%);
+      color: var(--text-main);
+      font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      padding: 1rem;
+    }
+
+    header {
+      text-align: center;
+      margin-top: 4.5rem;
+      margin-bottom: 2rem;
+    }
+
+    header h1 {
+      font-family: "Orbitron", sans-serif;
+      font-size: 2.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    header p {
+      margin-top: 0.75rem;
+      max-width: 780px;
+      margin-left: auto;
+      margin-right: auto;
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      line-height: 1.7;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto 3rem;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-bottom: 0.8rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 255, 255, 0.6);
+      color: var(--accent);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .section {
+      background: radial-gradient(circle at top left, rgba(0, 255, 255, 0.08), #050608);
+      border-radius: 16px;
+      padding: 1.8rem 1.6rem;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 0 22px rgba(0, 0, 0, 0.65);
+      margin-bottom: 1.8rem;
+    }
+
+    .section h2 {
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 0.9rem;
+    }
+
+    .section p {
+      font-size: 0.96rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .section strong {
+      color: var(--text-main);
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.4rem;
+      margin-top: 0.6rem;
+    }
+
+    .subblock h3 {
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.35rem;
+      font-family: "Orbitron", sans-serif;
+    }
+
+    .subblock p {
+      font-size: 0.94rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .tag-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.4rem;
+    }
+
+    .tag-pill {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: var(--text-main);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .code-block {
+      font-family: "Consolas", "Courier New", monospace;
+      font-size: 0.88rem;
+      background: #050608;
+      border-radius: 10px;
+      padding: 0.9rem 1rem;
+      border: 1px solid rgba(0, 255, 255, 0.35);
+      margin-top: 0.7rem;
+      overflow-x: auto;
+      white-space: pre;
+      color: #e4e4e4;
+    }
+
+    .section h3 {
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 0.8rem;
+      margin-bottom: 0.3rem;
+      color: var(--accent);
+      font-family: "Orbitron", sans-serif;
+    }
+
+    .flex-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.4rem;
+      margin-top: 0.9rem;
+    }
+
+    .flex-item {
+      flex: 1 1 260px;
+    }
+
+    ul {
+      padding-left: 1.1rem;
+      margin-bottom: 0.7rem;
+      color: var(--text-muted);
+      font-size: 0.94rem;
+    }
+
+    li {
+      margin-bottom: 0.25rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.4rem 0 0.8rem;
+      border-top: 1px solid rgba(0, 255, 255, 0.22);
+      color: #999;
+      font-size: 0.84rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 1.7rem auto 0;
+      padding: 0.7rem 2rem;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      background: transparent;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background: var(--accent);
+      color: #050505;
+      box-shadow: 0 0 18px var(--accent);
+    }
+
+    .nav-menu {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 1000;
+    }
+
+    .menu-logo {
+      position: relative;
+      display: inline-block;
+      padding: 0.5rem;
+      margin: -0.5rem;
+    }
+
+    .menu-logo img {
+      width: 60px;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease, filter 0.3s ease;
+      filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.5));
+      display: block;
+    }
+
+    .menu-logo img:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 15px rgba(0, 255, 255, 0.85));
+    }
+
+    .menu-links {
+      list-style: none;
+      position: absolute;
+      top: 15px;
+      left: 70px;
+      display: flex;
+      gap: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.35s ease;
+    }
+
+    .menu-logo:hover .menu-links {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(0);
+    }
+
+    .menu-links li a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: "Orbitron", sans-serif;
+    }
+
+    .menu-links li a:hover {
+      color: #ffffff;
+      text-shadow: 0 0 8px var(--accent);
+    }
+
+    .menu-links li {
+      transform: translateX(-12px);
+      transition: transform 0.25s ease;
+    }
+
+    .menu-logo:hover .menu-links li {
+      transform: translateX(0);
+    }
+
+    @media (max-width: 900px) {
+      body {
+        padding: 0.8rem;
+      }
+
+      header {
+        margin-top: 4rem;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .section-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-menu {
+        top: 0.6rem;
+        left: 0.6rem;
+      }
+
+      .menu-links {
+        background: rgba(0, 0, 0, 0.9);
+        padding: 0.6rem 0.9rem;
+        border-radius: 999px;
+      }
+    }
+  </style>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CLZJG4TBGR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CLZJG4TBGR');
+  </script>
+</head>
+
+<body>
+  <!-- Navigation Menu -->
+  <nav class="nav-menu">
+    <div class="menu-logo">
+      <img src="assets/images/colored-emblem-01a.png" alt="ChippyCraft Icon" class="menu-icon">
+      <ul class="menu-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header>
+    <div class="badge">GENG 389 • Mechatronics E-Portfolio</div>
+    <h1>Thermo-Electric Infinity Table</h1>
+    <p>
+      This page documents my final project for GENG 389 at UW-River Falls: a thermo-electric powered LED system
+      integrated into a ChippyCraft fire table. The goal is to turn waste heat from a propane burner into usable
+      electrical power that drives an ESP32, a relay, and a 12V WS2815 infinity lighting strip — no cords,
+      batteries, or external power bricks.
+    </p>
+  </header>
+
+  <main>
+    <!-- PROJECT OVERVIEW (HOME PAGE CONTENT) -->
+    <section class="section" id="overview">
+      <h2>Project Overview</h2>
+      <p>
+        The real-world problem I wanted to solve is simple: outdoor tables look amazing with lighting, but cords,
+        outlets, and battery packs are all annoying. They get in the way, they’re easy to trip on, and they don’t
+        fit the premium look I want for ChippyCraft products. This project explores whether I can power a lighting
+        system using only the heat from the fire table itself.
+      </p>
+      <p>
+        The system uses three thermoelectric generator (TEG) modules in series to harvest heat from a steel hot
+        plate mounted above the burner. A boost converter conditions the TEG output to a regulated 12V DC bus.
+        From there, a relay switches 12V power to a WS2815 LED strip, and a buck converter supplies 5V to an ESP32
+        DevKitC microcontroller. The ESP32 runs a red-white-blue demo pattern using the FastLED library and
+        controls the relay with a dedicated GPIO pin.
+      </p>
+      <ul class="tag-list">
+        <li class="tag-pill">ESP32</li>
+        <li class="tag-pill">Thermoelectric Generators</li>
+        <li class="tag-pill">WS2815 RGB Strip</li>
+        <li class="tag-pill">Boost &amp; Buck Converters</li>
+        <li class="tag-pill">Relay Control</li>
+      </ul>
+      <p style="margin-top: 0.7rem; font-size: 0.9rem; color: var(--text-muted);">
+        <strong>Demo Video:</strong> this is where I will embed or link a 1–2 minute “hero” video showing the
+        prototype running in the fire table environment.
+      </p>
+    </section>
+
+    <!-- ENGINEERING JOURNEY -->
+    <section class="section" id="journey">
+      <h2>The Engineering Journey</h2>
+      <div class="section-grid">
+        <div class="subblock">
+          <h3>Empathize &amp; Define</h3>
+          <p>
+            I started by thinking about real users for this system: bar and brewery owners, and people who want a
+            statement piece on their patio. Their main needs are clean aesthetics, simple operation, and “wow”
+            factor at night. Cords running across the floor and battery packs sitting on top of the table both
+            fight against that goal.
+          </p>
+          <p>
+            From that, I defined the problem as: <strong>“Create a self-powered infinity lighting system for an
+            outdoor fire table that runs only when the fire is on.”</strong>
+          </p>
+        </div>
+
+        <div class="subblock">
+          <h3>Ideate &amp; On-Paper Design</h3>
+          <p>
+            I brainstormed several power options: hidden wall power, low-voltage landscape wiring, solar panels,
+            and thermoelectric generation. Thermoelectric generators were the most interesting because they let
+            the fire do double duty: heat and power. On paper, I sketched a basic block diagram:
+          </p>
+          <p>
+            <strong>Fire heat → steel plate → 3× TEGs (series) → boost converter (12V) → relay + buck → ESP32 +
+            WS2815 strip.</strong>
+          </p>
+          <p>
+            I also drafted a “thermal sandwich” with TEGs clamped between a hot steel plate and aluminum heatsinks,
+            plus rough pseudocode for the ESP32 to turn the relay on and drive a simple red-white-blue pattern.
+          </p>
+        </div>
+
+        <div class="subblock">
+          <h3>The Messy Middle</h3>
+          <p>
+            The build process wasn’t a straight line. I fought with unstable TEG voltage, figuring out which ESP32
+            pins to use reliably, installing USB drivers so the board would even show up, and wiring the relay
+            module correctly. I also accidentally ordered a 30A fuse instead of a 3A fuse, which forced me to slow
+            down and double-check ratings and wiring.
+          </p>
+          <p>
+            Each time something didn’t work, I had to isolate the variables: first test the ESP32 and LED strip
+            from a stable 12V bench supply, then verify the relay control logic, and only then bring the TEGs and
+            boost converter into the loop. This “one change at a time” approach was a big part of the learning.
+          </p>
+        </div>
+
+        <div class="subblock">
+          <h3>Final Prototype</h3>
+          <p>
+            The current prototype ties everything together into a weather-resistant control box. The TEG harness
+            comes in through a waterproof connector, feeds the boost converter, and then splits into the relay
+            (for LED power) and buck converter (for the ESP32). All grounds are shared to keep the strip, the
+            relay module, and the microcontroller in the same reference.
+          </p>
+          <p>
+            The ESP32 now reliably controls a 12V WS2815 strip with a static red-white-blue pattern at reduced
+            brightness to respect the power budget, and it switches the relay on a dedicated GPIO pin. The system
+            is ready for future upgrades like Wi-Fi control, brightness modes, or a temperature sensor.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECHNICAL DEEP DIVE -->
+    <section class="section" id="technical">
+      <h2>Technical Deep-Dive</h2>
+
+      <div class="flex-row">
+        <div class="flex-item">
+          <h3>Power Architecture</h3>
+          <p>The as-built power flow looks like this:</p>
+          <div class="code-block">
+[3× TEGs in Series] → Boost Converter (≈12 V DC regulated)
+                     → Relay → Fuse → WS2815 LED Strip (+12 V)
+                     → Buck Converter (12 V → 5 V) → ESP32 (5 V)
+          </div>
+          <p>
+            The relay only switches the +12 V line going to the LED strip. All grounds (boost converter, buck
+            converter, ESP32, relay, and LED strip) are tied together. This keeps the control side simple while
+            still giving the ESP32 full authority over when the LEDs receive power.
+          </p>
+        </div>
+
+        <div class="flex-item">
+          <h3>Electronics &amp; BOM</h3>
+          <p>The main electronic components are:</p>
+          <ul>
+            <li>1× ESP32 DevKitC microcontroller</li>
+            <li>3× Thermoelectric generator modules (TEGs) in series</li>
+            <li>1× Adjustable boost converter (TEG output → 12 V bus)</li>
+            <li>1× Buck converter (12 V → 5 V for ESP32)</li>
+            <li>1× WS2815 12 V addressable RGB LED strip</li>
+            <li>1× Relay module (5 V logic, opto-isolated)</li>
+            <li>1× Inline fuse holder with 3 A fuse for LED supply</li>
+            <li>Assorted wiring, connectors, and a weather-resistant enclosure</li>
+          </ul>
+          <p style="font-size: 0.9rem;">
+            A detailed BOM with part numbers, vendors, and estimated cost can be exported as a separate PDF or
+            spreadsheet for instructor review.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex-row" style="margin-top: 1.2rem;">
+        <div class="flex-item">
+          <h3>Mechanical &amp; Thermal Design</h3>
+          <p>
+            Mechanically, the core of the system is a steel plate that sits in the fire table’s heat zone. The hot
+            side of each TEG is bonded to this plate with thermal paste, and the cold side is clamped to finned
+            aluminum heatsinks. The goal is to maintain a strong temperature difference across each module while
+            protecting them from mechanical stress.
+          </p>
+          <p>
+            Wiring from the TEG stack is kept short and uses appropriately sized wire to minimize voltage drop.
+            All electronics live in a separate enclosure mounted away from direct flame, with cable grommets or
+            glands to keep the box as weather-resistant as possible.
+          </p>
+        </div>
+
+        <div class="flex-item">
+          <h3>Controller &amp; Software</h3>
+          <p>
+            The ESP32 is programmed using the Arduino IDE and the FastLED library. GPIO 18 is used as the LED data
+            pin, and GPIO 14 controls the relay module. The Level 1 demo code below drives a static red-white-blue
+            pattern and assumes the relay is active-LOW (which is common on many 5 V relay boards).
+          </p>
+          <div class="code-block">
+// Final demo code (Level 1)
+// ESP32 + WS2815 + relay demo for Thermo-Electric Infinity Table
+
+#include &lt;FastLED.h&gt;
+
+#define LED_PIN     18
+#define RELAY_PIN   14
+#define NUM_LEDS    60        // adjust to your actual strip length
+#define LED_TYPE    WS2812B   // WS2815 behaves similarly for FastLED
+#define COLOR_ORDER GRB
+
+CRGB leds[NUM_LEDS];
+
+void setup() {
+  pinMode(RELAY_PIN, OUTPUT);
+  digitalWrite(RELAY_PIN, LOW); // turn relay ON (active-LOW module)
+
+  FastLED.addLeds&lt;LED_TYPE, LED_PIN, COLOR_ORDER&gt;(leds, NUM_LEDS);
+  FastLED.setBrightness(80);    // tuned down for TEG power limits
+
+  fillRedWhiteBlue();
+  FastLED.show();
+}
+
+void loop() {
+  // Static pattern for demo – future versions can add animations or Wi-Fi control
+}
+
+void fillRedWhiteBlue() {
+  const int segment = NUM_LEDS / 3;
+  for (int i = 0; i &lt; NUM_LEDS; i++) {
+    if (i &lt; segment) {
+      leds[i] = CRGB::Red;
+    } else if (i &lt; 2 * segment) {
+      leds[i] = CRGB::White;
+    } else {
+      leds[i] = CRGB::Blue;
+    }
+  }
+}
+          </div>
+          <p style="font-size: 0.9rem; margin-top: 0.4rem;">
+            Future versions of the code will add brightness control, multiple modes, and a simple Wi-Fi web page
+            so users can change patterns from their phone without needing a separate app.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT / SKILLS -->
+    <section class="section" id="about">
+      <h2>About the Engineer</h2>
+      <p>
+        I’m Ryan “Chippy” Bostrom, a non-traditional Engineering Technology and Agricultural Business student at
+        UW-River Falls and the founder of ChippyCraft LLC. My background is in welding, fabrication, and epoxy
+        art, and I’m building a product line of infinity tables, patio sets, and lighting that blend industrial
+        steel frames with custom lighting and epoxy work.
+      </p>
+      <p>
+        This project let me connect my hands-on fabrication skills with mechatronics: power electronics,
+        microcontroller programming, and thermal design. It also serves a double purpose as both a graded
+        E-Portfolio for GENG 389 and an early prototype for a real ChippyCraft product.
+      </p>
+
+      <div class="flex-row" style="margin-top: 1rem;">
+        <div class="flex-item">
+          <h3>Skills Used</h3>
+          <ul>
+            <li>Embedded systems: ESP32 setup, GPIO, and FastLED</li>
+            <li>Power electronics: boost/buck converters and relay control</li>
+            <li>Thermal &amp; mechanical: TEG stack and enclosure layout</li>
+            <li>Wiring &amp; integration of 12 V LED strips</li>
+            <li>Documentation and portfolio building on a live website</li>
+          </ul>
+        </div>
+        <div class="flex-item">
+          <h3>Where This Goes Next</h3>
+          <p>
+            Future versions will focus on polishing the thermal design, improving TEG efficiency, and adding
+            user-friendly controls. The long-term goal is to integrate this system into production-ready
+            ChippyCraft patio tables and infinity lamps that can be sold to local bars, breweries, and homeowners.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div style="text-align:center;">
+      <a href="infinity-lighting.html" class="btn">Back to Infinity Lighting</a>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 ChippyCraft LLC — Mechatronics E-Portfolio • Thermo-Electric Infinity Table
+  </footer>
+
+  <script>
+    // Fade transition like other pages
+    document.querySelectorAll('.btn, a').forEach(link => {
+      link.addEventListener('click', e => {
+        const href = link.getAttribute('href');
+        if (href && !href.startsWith('#') && !href.startsWith('mailto:')) {
+          e.preventDefault();
+          document.body.style.transition = "opacity 0.6s ease";
+          document.body.style.opacity = "0";
+          setTimeout(() => {
+            window.location = href;
+          }, 600);
+        }
+      });
+    });
+
+    window.addEventListener('load', () => {
+      document.body.style.opacity = "0";
+      setTimeout(() => {
+        document.body.style.transition = "opacity 0.8s ease";
+        document.body.style.opacity = "1";
+      }, 50);
+    });
+  </script>
+</body>
+</html>
