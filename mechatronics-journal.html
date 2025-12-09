@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChippyCraft | Thermo-Electric Project Journal</title>
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+  <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg-panel: #0e1116;
+      --accent: #00ffff;
+      --accent-soft: rgba(0, 255, 255, 0.15);
+      --text-main: #e0e0e0;
+      --text-muted: #a8a8a8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: url('assets/images/brushed-metal.png') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--text-main);
+      font-family: 'Orbitron', sans-serif;
+      min-height: 100vh;
+      opacity: 1;
+      transition: opacity 0.6s ease;
+      padding: 1rem;
+    }
+
+    header {
+      text-align: center;
+      margin-top: 4.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 255, 255, 0.6);
+      color: var(--accent);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    header h1 {
+      font-size: 2.3rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-top: 0.6rem;
+    }
+
+    header p {
+      margin-top: 0.8rem;
+      max-width: 850px;
+      margin-left: auto;
+      margin-right: auto;
+      font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.96rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto 3rem;
+      font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    .journal-intro {
+      background: var(--bg-panel);
+      border-radius: 16px;
+      padding: 1.6rem 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 14px rgba(0, 0, 0, 0.6);
+      margin-bottom: 1.8rem;
+    }
+
+    .journal-intro h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+      color: var(--accent);
+    }
+
+    .journal-intro p {
+      font-size: 0.94rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 0.4rem;
+    }
+
+    .journal-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .journal-entry {
+      background: #0e1116;
+      border-radius: 14px;
+      padding: 1.2rem 1.3rem;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.65);
+      position: relative;
+    }
+
+    .journal-entry::before {
+      content: "";
+      position: absolute;
+      left: -1px;
+      top: 14px;
+      bottom: 14px;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+      opacity: 0.7;
+    }
+
+    .journal-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.5rem 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .journal-date {
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+    }
+
+    .journal-title {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-main);
+    }
+
+    .journal-tag {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-main);
+    }
+
+    .journal-body {
+      margin-top: 0.4rem;
+    }
+
+    .journal-body ul {
+      margin: 0.3rem 0 0.2rem 1.1rem;
+      padding: 0;
+      list-style: disc;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    .journal-body li {
+      margin-bottom: 0.18rem;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      margin-top: 1.2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.6rem 1.8rem;
+      border-radius: 4px;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .btn:hover {
+      background: var(--accent);
+      color: #050505;
+      box-shadow: 0 0 16px var(--accent-soft);
+    }
+
+    footer {
+      max-width: 1100px;
+      margin: 0 auto;
+      border-top: 1px solid rgba(0, 255, 255, 0.25);
+      text-align: center;
+      padding: 1.2rem 0 0.8rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* Top-left hover menu (matches other pages) */
+    .nav-menu {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 1000;
+    }
+
+    .menu-logo {
+      position: relative;
+      display: inline-block;
+      padding: 0.5rem;
+      margin: -0.5rem;
+    }
+
+    .menu-logo img {
+      width: 60px;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease, filter 0.3s ease;
+      filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.5));
+      display: block;
+    }
+
+    .menu-logo img:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 15px rgba(0, 255, 255, 0.85));
+    }
+
+    .menu-links {
+      list-style: none;
+      position: absolute;
+      top: 15px;
+      left: 70px;
+      display: flex;
+      gap: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.35s ease;
+    }
+
+    .menu-logo:hover .menu-links {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(0);
+    }
+
+    .menu-links li a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .menu-links li a:hover {
+      color: #ffffff;
+      text-shadow: 0 0 8px var(--accent);
+    }
+
+    .menu-links li {
+      transform: translateX(-12px);
+      transition: transform 0.25s ease;
+    }
+
+    .menu-logo:hover .menu-links li {
+      transform: translateX(0);
+    }
+
+    @media (max-width: 900px) {
+      body {
+        padding: 0.8rem;
+      }
+
+      header {
+        margin-top: 4rem;
+      }
+
+      header h1 {
+        font-size: 1.9rem;
+      }
+
+      .journal-entry {
+        padding: 1rem 1rem;
+      }
+
+      .nav-menu {
+        top: 0.6rem;
+        left: 0.6rem;
+      }
+
+      .menu-links {
+        background: rgba(0, 0, 0, 0.92);
+        padding: 0.6rem 0.9rem;
+        border-radius: 999px;
+      }
+    }
+  </style>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CLZJG4TBGR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CLZJG4TBGR');
+  </script>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav-menu">
+    <div class="menu-logo">
+      <img src="assets/images/colored-emblem-01a.png" alt="ChippyCraft Icon" class="menu-icon">
+      <ul class="menu-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="infinity-lighting.html">Infinity Lighting</a></li>
+        <li><a href="mechatronics-eportfolio.html">E-Portfolio</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header>
+    <div class="badge">GENG 389 • Project Journal</div>
+    <h1>Thermo-Electric Infinity Table</h1>
+    <p>
+      This page documents the engineering journey behind the Thermo-Electric Infinity Table project in chronological
+      order. It tracks how the idea started as a challenge to “run lights from fire,” evolved through several design
+      iterations, and eventually became a working prototype ready for integration into ChippyCraft’s product line.
+    </p>
+  </header>
+
+  <main>
+    <section class="journal-intro">
+      <h2>How This Journal Is Organized</h2>
+      <p>
+        Entries are listed from earliest to latest and grouped around key milestones: early concept, research and
+        feasibility, design decisions, and the physical build and testing phase. Closely related events sometimes share
+        the same date to reflect how work actually clustered in time.
+      </p>
+    </section>
+
+    <section class="journal-container">
+      <!-- JOURNAL ENTRIES -->
+
+      <article class="journal-entry">
+        <div class="journal-header">
+          <div class="journal-date">May 5, 2025 (Monday)</div>
+          <div class="journal-title">Origin of the Thermo-Electric Lighting Concept</div>
+          <div class="journal-tag">[Planning]</div>
+        </div>
+        <div class="journal-body">
+          <ul>
+            <li>Completed my first Infinity Patio Table for a different course and presented it in class.</li>
+            <li>The professor asked whether I planned future product development and suggested adding lighting to the fire table.</li>
+            <li>This sparked the challenge to create a lighting system powered by the fire itself, rather than wall power.</li>
+            <li>Recognized that achieving this could differentiate ChippyCraft products and open future installation revenue opportunities.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="journal-entry">
+        <div class="journal-header">
+          <div class="journal-date">September 7, 2025 (Sunday)</div>
+          <div class="journal-title">Exploring Mechatronic Framework and System Feasibility</div>
+          <div class="journal-tag">[Planning]</div>
+        </div>
+        <div class="journal-body">
+          <ul>
+            <li>Reviewed the four components of a closed-loop mechatronic system and mapped them to an off-grid fire table design.</li>
+            <li>Identified thermoelectric generators as the energy source and LED strips as the actuator.</li>
+            <li>Determined early that a microcontroller would be needed to regulate lighting behavior and patterns.</li>
+            <li>Began considering how this project could evolve beyond class into a real commercial concept for ChippyCraft.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="journal-entry">
+        <div class="journal-header">
+          <div class="journal-date">September 11, 2025 (Thursday)</div>
+          <div class="journal-title">First System Concept and Early Requirements</div>
+          <div class="journal-tag">[Planning / Design]</div>
+        </div>
+        <div class="journal-body">
+          <ul>
+            <li>Defined the core project goal: operate LED lighting entirely from heat produced by a propane fire table.</li>
+            <li>Considered longer LED strip runs and the electrical implications of powering them from harvested heat.</li>
+            <li>Selected the ESP32 platform for its efficiency and flexibility compared to basic Arduino boards.</li>
+            <li>Established the system boundary: fully off-grid operation with minimal visible wiring and a clean installation.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="journal-entry">
+        <div class="journal-header">
+          <div class="journal-date">September 14, 2025 (Sunday)</div>
+          <div class="journal-title">Component Research and Early BOM Development</div>
+          <div class="journal-tag">[Planning]</div>
+        </div>
+        <div class="journal-body">
+          <ul>
+            <li>Researched TEG options, LED strip types, and microcontroller platforms suitable for outdoor use.</li>
+            <li>Identified WS2815 LED strips as strong candidates for their 12 V architecture and signal robustness.</li>
+            <li>Reviewed boost and buck converter options to stabilize low, variable TEG output.</li>
+            <li>Noted that LED power demand increases sharply with strip length, influencing future design limits.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="journal-entry">
+        <div class="journal-header">
+          <div class="journal-date">October 2, 2025 (Thursday)</div>
+          <div class="journal-title">LED Density, Load Calculations, and Power Optimization</div>
+          <div class="journal-tag">[Design]</div>
+        </div>
+        <div class="journal-body">
+          <ul>
+            <li>Compared LED strip densities to understand total wattage at different lengths.</li>
+            <li>Determined that high-density strips are not realistic for TEG-only power in this application.</li>
+            <li>Adopted brightness limits and animation strategies to reduce average power draw.</li>
+            <li>Concluded that shorter or lower-density strips would keep the system thermally feasible and stable.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="journal-entry">
+        <div class="journal-header">
+          <div class="journal-date">October 7, 2025 (Tuesday)</div>
+          <div class="journal-title">Battery vs Battery-Free Architecture Evaluation</div>
+          <div class="journal-tag">[Design]</div>
+        </div>
+        <div class="journal-body">
+          <ul>
+            <li>Explored designs using LiFePO₄ battery buffering to smooth LED behavior.</li>
+            <li>Calculated that large batteries for long runtime would be expensive, heavy, and overkill for a table.</li>
+            <li>Evaluated micro-battery support but found wiring and charging regulation unnecessary for the prototype.</li>
+            <li>Shifted direction toward a battery-free architecture to simplify design and reduce long-term product cost.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="journal-entry">
+        <div class="journal-header">
+          <div class="journal-date">October 12, 2025 (Sunday)</div>
+          <div class="journal-title">Thermal Analysis and TEG Capability Study</div>
+          <div class="journal-tag">[Design]</div>
+        </div>
+        <div class="journal-body">
+          <ul>
+            <li>Modeled TEG performance under realistic fire-table temperatures and cooling conditions.</li>
+            <li>Identified that TEGs near 200°F produce much better output than initially assumed.</li>
+            <li>Determined that multiple TEGs in series are needed to feed the boost converter effectively.</li>
+            <li>Concluded that a well-designed thermal sandwich could support LED loads without adding a battery.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="journal-entry">
+        <div class="journal-header">
+          <div class="journal-date">October 19, 2025 (Sunday)</div>
+          <div class="journal-title">Selecting ESP32 and Final System Direction</div>
+          <div class="journal-tag">[Design / Coding]</div>
+        </div>
+        <div class="journal-body">
+          <ul>
+            <li>Committed to the ESP32 DevKitC as the main controller due to its built-in Wi-Fi and flexibility.</li>
+            <li>Confirmed that a single digital data line can drive the addressable LED strip without MOSFETs.</li>
+            <li>Outlined future potential for wireless control modes and lighting customization.</li>
+            <li>Noted that ESP32-based control aligns with long-term plans to offer smart, premium lighting products.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="journal-entry">
+        <div class="journal-header">
+          <div class="journal-date">November 2, 2025 (Sunday)</div>
+          <div class="journal-title">High-Level Wiring Diagram and System Flow</div>
+          <div class="journal-tag">[Design / Documentation]</div>
+        </div>
+        <div class="journal-body">
+          <ul>
+            <li>Established the conceptual wiring architecture from heat source to LEDs and controller.</li>
+            <li>Defined the power flow: TEGs into a boost converter for 12 V, then into a buck converter for 5 V.</li>
+            <li>Confirmed the system does not require sensors to operate reliably; light output follows available heat.</li>
+            <li>Separated thermal, power, and logic zones for better layout inside the enclosure.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="journal-entry">
+        <div class="journal-header">
+          <div class="journal-date">November 6, 2025 (Thursday)</div>
+          <div class="journal-title">LED Strip Vendor Comparison and Outdoor Requirements</div>
+          <div class="journal-tag">[Design]</div>
+        </div>
+        <div class="journal-body">
+          <ul>
+            <li>Reviewed multiple outdoor-rated LED strip options from different vendors.</li>
+            <li>Compared IP ratings, mechanical durability, silicone coatings, and mounting options.</li>
+            <li>Identified that many inexpensive strips rely on weak adhesive backing not ideal for long-term outdoor use.</li>
+            <li>Focused on options that can be mechanically clamped or channeled instead of relying only on adhesive.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="journal-entry">
+        <div class="journal-header">
+          <div class="journal-date">November 9, 2025 (Sunday)</div>
+          <div class="journal-title">Refining LED Compatibility and System Constraints</div>
+          <div class="journal-tag">[Troubleshooting / Design]</div>
+        </div>
+        <div class="journal-body">
+          <ul>
+            <li>Analyzed compatibility between more rugged neon-flex LED strips and the ESP32 + converter system.</li>
+            <li>Reviewed power injection needs, signal integrity, and voltage drop for longer runs.</li>
+            <li>Recognized that 25 ft continuous runs introduce significant complexity for a first prototype.</li>
+            <li>Decided to keep LED length within a realistic, manageable range for the initial build.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="journal-entry">
+        <div class="journal-header">
+          <div class="journal-date">November 13, 2025 (Thursday)</div>
+          <div class="journal-title">Two Build Proposals and System Simplification</div>
+          <div class="journal-tag">[Design]</div>
+        </div>
+        <div class="journal-body">
+          <ul>
+            <li>Developed two full system proposals: a simple 5 V WS2812B build and a 24 V neon-flex build.</li>
+            <li>Outlined wiring, fuses, and converter requirements for both approaches.</li>
+            <li>Found that the 24 V neon-flex design added cost and sourcing difficulty without strong benefits for the class prototype.</li>
+            <li>Chose to simplify and return to a focused WS2815-based design with light weatherproofing upgrades.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="journal-entry">
+        <div class="journal-header">
+          <div class="journal-date">November 23, 2025 (Sunday)</div>
+          <div class="journal-title">BOM Refinement and Removal of Unnecessary Components</div>
+          <div class="journal-tag">[Design]</div>
+        </div>
+        <div class="journal-body">
+          <ul>
+            <li>Removed unneeded level shifters, capacitors, and duplicate converters from the design.</li>
+            <li>Simplified LED data wiring so the ESP32 connects directly to the LED DI input.</li>
+            <li>Confirmed that the relay should only switch 12 V power to the LEDs, not data.</li>
+            <li>Aligned the BOM with both class requirements and realistic cost targets for future products.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="journal-entry">
+        <div class="journal-header">
+          <div class="journal-date">November 25, 2025 (Tuesday)</div>
+          <div class="journal-title">Power Architecture and Housing Strategy Finalized</div>
+          <div class="journal-tag">[Design]</div>
+        </div>
+        <div class="journal-body">
+          <ul>
+            <li>Completed the power-flow design: TEGs into a boost converter for 12 V, then a buck converter down to 5 V for the ESP32.</li>
+            <li>Confirmed the need for shared ground across the converters, ESP32, relay, and LED strip.</li>
+            <li>Selected a weather-resistant polycarbonate enclosure and a layout based on thermal zones.</li>
+            <li>Planned to mount components using standoffs and Velcro to simplify service and revision work.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="journal-entry">
+        <div class="journal-header">
+          <div class="journal-date">December 5, 2025 (Friday)</div>
+          <div class="journal-title">Wiring Strategy and Material Setup</div>
+          <div class="journal-tag">[Design]</div>
+        </div>
+        <div class="journal-body">
+          <ul>
+            <li>Finalized wiring paths from TEGs to converters and from converters to the LED strip and ESP32.</li>
+            <li>Chose 18 AWG wire for power paths and 22 AWG for data and control signals.</li>
+            <li>Reviewed the behavior of the boost and buck converters before permanent wiring.</li>
+            <li>Organized the physical layout inside the enclosure to support clean routing and troubleshooting.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="journal-entry">
+        <div class="journal-header">
+          <div class="journal-date">December 6, 2025 (Saturday)</div>
+          <div class="journal-title">Soldering Practice and ESP32 Power Validation</div>
+          <div class="journal-tag">[Build]</div>
+        </div>
+        <div class="journal-body">
+          <ul>
+            <li>Practiced soldering pin headers and small-gauge wires to gain confidence for the main assembly.</li>
+            <li>Soldered the buck converter output to the ESP32 and verified a stable 5 V supply using a multimeter.</li>
+            <li>Confirmed all power connections were correctly oriented before powering the board.</li>
+            <li>Transitioned from design work into hands-on build work with validated power wiring.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="journal-entry">
+        <div class="journal-header">
+          <div class="journal-date">December 7, 2025 (Sunday)</div>
+          <div class="journal-title">Relay Wiring and Control Verification</div>
+          <div class="journal-tag">[Build / Testing]</div>
+        </div>
+        <div class="journal-body">
+          <ul>
+            <li>Wired the relay coil to the ESP32 and the buck converter output.</li>
+            <li>Uploaded a simple test sketch to toggle the relay and confirm logic control.</li>
+            <li>Heard and observed the relay clicking in response to the program, confirming functional control.</li>
+            <li>Verified that the relay subsystem worked correctly before adding the LED load.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="journal-entry">
+        <div class="journal-header">
+          <div class="journal-date">December 7, 2025 (Sunday)</div>
+          <div class="journal-title">ESP32 Environment Setup and Code Deployment</div>
+          <div class="journal-tag">[Coding / Troubleshooting]</div>
+        </div>
+        <div class="journal-body">
+          <ul>
+            <li>Installed ESP32 board definitions in the Arduino IDE and fixed COM port recognition by adding CP2102 drivers.</li>
+            <li>Learned the correct BOOT and EN button timing for forcing the ESP32 into programming mode when needed.</li>
+            <li>Uploaded a FastLED-based red-white-blue demo pattern to the board without compilation errors.</li>
+            <li>Confirmed that relay control still functioned correctly under the new program.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="journal-entry">
+        <div class="
