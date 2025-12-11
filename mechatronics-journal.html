@@ -738,6 +738,39 @@
           </ul>
         </div>
       </article>
+      
+      <article class="journal-entry">
+        <div class="journal-header">
+          <div class="journal-date">December 10, 2025 (Wednesday)</div>
+          <div class="journal-title">First LED flashes and diagnosing power limitations</div>
+          <div class="journal-tag">[Testing / Troubleshooting]</div>
+        </div>
+        <div class="journal-body">
+          <ul>
+            <li>Powered the ESP32 and LED strip using a USB power bank and achieved the first visible LED flashes (blue pixels), confirming data wiring and strip integrity.</li>
+            <li>Observed the power bank shutting off immediately after the flashes, indicating an inrush current spike beyond the bank’s current limit.</li>
+            <li>Verified that the boost converter and LED strips were functioning correctly and traced the issue to insufficient power supply capability.</li>
+            <li>Learned that even short LED strips draw significant surge current during initialization, requiring a stronger 5 V source for stable operation.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="journal-entry">
+        <div class="journal-header">
+          <div class="journal-date">December 10, 2025 (Wednesday)</div>
+          <div class="journal-title">Replacing faulty LED connectors and confirming clean 12 V at pad</div>
+          <div class="journal-tag">[Build / Troubleshooting / Testing]</div>
+        </div>
+        <div class="journal-body">
+          <ul>
+            <li>Cut off the original LED connectors and soldered new 3-pin waterproof plugs, assigning clean +12 V, DI, and GND mapping.</li>
+            <li>Combined the strip’s loose power injection wires with matching colors to reinforce voltage delivery across the strip.</li>
+            <li>Confirmed a solid 12 V reading directly on the LED strip’s +12 V and GND pads, proving the connector fix and wiring were successful.</li>
+            <li>Retested with the 5 ft LED strip and saw identical “flash then shutdown” behavior, confirming the issue was not wiring-related but due to the power bank being unable to handle LED startup current.</li>
+            <li>Verified that a single LED could light when the ESP32 was powered directly, demonstrating that data, grounding, and strip logic were correct and that the remaining limitation is the available power source.</li>
+          </ul>
+        </div>
+      </article>
 
       <!-- END OF JOURNAL ENTRIES -->
     </section>
