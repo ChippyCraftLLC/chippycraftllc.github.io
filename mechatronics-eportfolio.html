@@ -507,4 +507,185 @@
             still giving the ESP32 full authority over when the LEDs receive power.
           </p>
           <p>
-            Bench testing and connector rework confirmed clean 12 V at the LED pads and reliable data
+            Bench testing and connector rework confirmed clean 12 V at the LED pads and reliable data signaling, while
+            later tests highlighted the impact of LED startup surge current on weak power sources. In the final configuration,
+            the goal is stable operation from TEG-derived power with adequate conditioning and thermal performance.
+          </p>
+        </div>
+
+        <div class="flex-item">
+          <h3>Electronics &amp; BOM</h3>
+          <p>The main electronic components are:</p>
+          <ul>
+            <li>1× ESP32 DevKitC microcontroller</li>
+            <li>3× Thermoelectric generator modules (TEGs) in series</li>
+            <li>1× Adjustable boost converter (TEG output → 12 V bus)</li>
+            <li>1× Buck converter (12 V → 5 V for ESP32)</li>
+            <li>1× WS2815 12 V addressable RGB LED strip</li>
+            <li>1× Relay module (5 V logic, opto-isolated)</li>
+            <li>1× Inline fuse holder with 3 A fuse for LED supply</li>
+            <li>Assorted wiring, connectors, and a weather-resistant enclosure</li>
+          </ul>
+          <p style="font-size: 0.9rem;">
+            A detailed BOM with part numbers, vendors, and estimated cost can be exported as a separate PDF or
+            spreadsheet for instructor review.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex-row" style="margin-top: 1.2rem;">
+        <div class="flex-item">
+          <h3>Mechanical &amp; Thermal Design</h3>
+          <p>
+            Mechanically, the core of the system is a steel plate that sits in the fire table’s heat zone. The hot
+            side of each TEG is bonded to this plate with thermal paste, and the cold side is clamped to finned
+            aluminum heatsinks. The goal is to maintain a strong temperature difference across each module while
+            protecting them from mechanical stress.
+          </p>
+          <p>
+            In real outdoor testing, wind and ambient temperature made the thermal differential more challenging than
+            idealized calculations. This reinforced that thermal management (heatsink performance, airflow, and consistent
+            clamping pressure) is as important as wiring when the goal is dependable, self-powered operation.
+          </p>
+          <p>
+            Wiring from the TEG stack is kept short and uses appropriately sized wire to minimize voltage drop.
+            All electronics live in a separate enclosure mounted away from direct flame, with cable grommets or
+            glands to keep the box as weather-resistant as possible.
+          </p>
+        </div>
+
+        <div class="flex-item">
+          <h3>Controller &amp; Software</h3>
+          <p>
+            The ESP32 is programmed using the Arduino IDE and the FastLED library. GPIO 18 is used as the LED data
+            pin, and GPIO 14 controls the relay module. The Level 1 demo code below drives a static red-white-blue
+            pattern and assumes the relay is active-LOW (which is common on many 5 V relay boards).
+          </p>
+          <div class="code-block">
+// Final demo code (Level 1)
+// ESP32 + WS2815 + relay demo for Thermo-Electric Infinity Table
+
+#include &lt;FastLED.h&gt;
+
+#define LED_PIN     18
+#define RELAY_PIN   14
+#define NUM_LEDS    60        // adjust to your actual strip length
+#define LED_TYPE    WS2812B   // WS2815 behaves similarly for FastLED
+#define COLOR_ORDER GRB
+
+CRGB leds[NUM_LEDS];
+
+void setup() {
+  pinMode(RELAY_PIN, OUTPUT);
+  digitalWrite(RELAY_PIN, LOW); // turn relay ON (active-LOW module)
+
+  FastLED.addLeds&lt;LED_TYPE, LED_PIN, COLOR_ORDER&gt;(leds, NUM_LEDS);
+  FastLED.setBrightness(80);    // tuned down for TEG power limits
+
+  fillRedWhiteBlue();
+  FastLED.show();
+}
+
+void loop() {
+  // Static pattern for demo – future versions can add animations or Wi-Fi control
+}
+
+void fillRedWhiteBlue() {
+  const int segment = NUM_LEDS / 3;
+  for (int i = 0; i &lt; NUM_LEDS; i++) {
+    if (i &lt; segment) {
+      leds[i] = CRGB::Red;
+    } else if (i &lt; 2 * segment) {
+      leds[i] = CRGB::White;
+    } else {
+      leds[i] = CRGB::Blue;
+    }
+  }
+}
+          </div>
+          <p style="font-size: 0.9rem; margin-top: 0.4rem;">
+            Future versions of the code will add brightness control, multiple modes, and a simple Wi-Fi web page
+            so users can change patterns from their phone without needing a separate app.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT / SKILLS -->
+    <section class="section" id="about">
+      <h2>About the Engineer</h2>
+      <p>
+        I’m Ryan “Chippy” Bostrom, a non-traditional Engineering Technology and Agricultural Business student at
+        UW-River Falls and the founder of ChippyCraft LLC. My background is in welding, fabrication, and epoxy
+        art, and I’m building a product line of infinity tables, patio sets, and lighting that blend industrial
+        steel frames with custom lighting and epoxy work.
+      </p>
+      <p>
+        This project let me connect my hands-on fabrication skills with mechatronics: power electronics,
+        microcontroller programming, and thermal design. It also serves a double purpose as both a graded
+        E-Portfolio for GENG 389 and an early prototype for a real ChippyCraft product.
+      </p>
+      <p>
+        The process reinforced how much progress comes from iteration: breaking the system into testable pieces,
+        proving wiring and control logic with simple experiments, and then chasing the real constraints that show up
+        under load and outdoor conditions.
+      </p>
+
+      <div class="flex-row" style="margin-top: 1rem;">
+        <div class="flex-item">
+          <h3>Skills Used</h3>
+          <ul>
+            <li>Embedded systems: ESP32 setup, GPIO, and FastLED</li>
+            <li>Power electronics: boost/buck converters and relay control</li>
+            <li>Thermal &amp; mechanical: TEG stack and enclosure layout</li>
+            <li>Wiring &amp; integration of 12 V LED strips</li>
+            <li>Documentation and portfolio building on a live website</li>
+          </ul>
+        </div>
+        <div class="flex-item">
+          <h3>Where This Goes Next</h3>
+          <p>
+            Future versions will focus on polishing the thermal design, improving TEG efficiency, and hardening the
+            power delivery so LED startup behavior is stable in the real fire-table environment. The long-term goal is
+            to integrate this system into production-ready ChippyCraft patio tables and infinity lighting installs that
+            can be sold to local bars, breweries, and homeowners.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div style="text-align:center;">
+      <a href="infinity-lighting.html" class="btn">Back to Infinity Lighting</a>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 ChippyCraft LLC — Mechatronics E-Portfolio • Thermo-Electric Infinity Table
+  </footer>
+
+  <script>
+    // Fade transition like other pages
+    document.querySelectorAll('.btn, a').forEach(link => {
+      link.addEventListener('click', e => {
+        const href = link.getAttribute('href');
+        if (href && !href.startsWith('#') && !href.startsWith('mailto:')) {
+          e.preventDefault();
+          document.body.style.transition = "opacity 0.6s ease";
+          document.body.style.opacity = "0";
+          setTimeout(() => {
+            window.location = href;
+          }, 600);
+        }
+      });
+    });
+
+    window.addEventListener('load', () => {
+      document.body.style.opacity = "0";
+      setTimeout(() => {
+        document.body.style.transition = "opacity 0.8s ease";
+        document.body.style.opacity = "1";
+      }, 50);
+    });
+  </script>
+</body>
+</html>
