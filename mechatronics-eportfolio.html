@@ -387,12 +387,11 @@
         be powered using only the heat from the fire table itself.
       </p>
         <p>
-        The TEGs work through the <strong>Seebeck effect</strong>, where a temperature difference across the module generates
-        a small DC voltage that can be conditioned and used to power electronics.  The system uses three thermoelectric generator 
-        (TEG) modules in series to harvest heat from a steel hot  plate mounted above the burner. A boost converter conditions 
-        the TEG output to a regulated 12V DC bus. From there, a relay switches 12V power to a WS2815 LED strip, and a buck converter 
-        supplies 5V to an ESP32 DevKitC microcontroller. The ESP32 runs a red-white-blue demo pattern using the FastLED library and
-        controls the relay with a dedicated GPIO pin.
+       Thermal Electric Generators (TEGs) work through the <strong>Seebeck effect</strong>, where a temperature difference across the module generates
+        a small DC voltage that can be conditioned and used to power electronics.  The system uses three TEG modules in series to harvest heat from 
+        a steel hot  plate mounted above the burner. A boost converter conditions the TEG output to a regulated 12V DC bus. From there, a relay switches 
+        12V power to a WS2815 LED strip, and a buck converter supplies 5V to an ESP32 DevKitC microcontroller. The ESP32 runs a red-white-blue demo 
+        pattern using the FastLED library and controls the relay with a dedicated GPIO pin.
       </p>
       <p>
         Testing confirmed the control logic and wiring integrity (including correct data signaling to the LEDs),
