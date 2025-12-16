@@ -371,8 +371,8 @@
     <p>
       This page documents my final project for GENG 389 at UW-River Falls: a thermo-electric powered LED system
       integrated into a ChippyCraft fire table. The goal is to turn waste heat from a propane burner into usable
-      electrical power that drives an ESP32, a relay, and a 12V WS2815 infinity lighting strip — no cords,
-      batteries, or external power bricks.
+      electrical power that drives an ESP32, a relay, and a 12V WS2815 infinity lighting strip with a clean,
+      self-contained installation—no visible cords, no battery packs, and no external power bricks.
     </p>
   </header>
 
@@ -383,8 +383,8 @@
       <p>
         The real-world problem I wanted to solve is simple: outdoor tables look amazing with lighting, but cords,
         outlets, and battery packs are all annoying. They get in the way, they’re easy to trip on, and they don’t
-        fit the premium look I want for ChippyCraft products. This project explores whether I can power a lighting
-        system using only the heat from the fire table itself.
+        fit the premium look I want for ChippyCraft products. This project explores whether a lighting system can
+        be powered using only the heat from the fire table itself.
       </p>
       <p>
         The system uses three thermoelectric generator (TEG) modules in series to harvest heat from a steel hot
@@ -392,6 +392,12 @@
         From there, a relay switches 12V power to a WS2815 LED strip, and a buck converter supplies 5V to an ESP32
         DevKitC microcontroller. The ESP32 runs a red-white-blue demo pattern using the FastLED library and
         controls the relay with a dedicated GPIO pin.
+      </p>
+      <p>
+        Testing confirmed the control logic and wiring integrity (including correct data signaling to the LEDs),
+        but it also exposed an important real-world constraint: addressable LED strips can draw a noticeable surge
+        current at startup. Managing that startup behavior and ensuring stable power under real thermal conditions
+        is the next refinement step as the prototype moves from “works on the bench” toward “works every time on a fire table.”
       </p>
       <ul class="tag-list">
         <li class="tag-pill">ESP32</li>
@@ -450,9 +456,12 @@
             down and double-check ratings and wiring.
           </p>
           <p>
-            Each time something didn’t work, I had to isolate the variables: first test the ESP32 and LED strip
-            from a stable 12V bench supply, then verify the relay control logic, and only then bring the TEGs and
-            boost converter into the loop. This “one change at a time” approach was a big part of the learning.
+            Each time something didn’t work, I isolated variables and tested one change at a time: first verify the
+            ESP32 and LED data behavior using known-good power, then confirm relay control logic, and only then bring
+            the TEGs and boost converter into the loop. A key learning moment came during late-stage testing when brief
+            LED flashes confirmed correct data wiring and strip integrity, but power sources shut down due to startup
+            current spikes. That shifted my focus from “is it wired right?” to “is the supply stable under real load?”
+            and reinforced the importance of testing systems under realistic electrical and thermal conditions.
           </p>
         </div>
 
@@ -465,9 +474,10 @@
             relay module, and the microcontroller in the same reference.
           </p>
           <p>
-            The ESP32 now reliably controls a 12V WS2815 strip with a static red-white-blue pattern at reduced
-            brightness to respect the power budget, and it switches the relay on a dedicated GPIO pin. The system
-            is ready for future upgrades like Wi-Fi control, brightness modes, or a temperature sensor.
+            The ESP32 now reliably drives a 12V WS2815 strip using a static red-white-blue pattern at reduced
+            brightness, and it switches the relay on a dedicated GPIO pin. The overall architecture is proven,
+            and the remaining work is focused on consistent power delivery during LED startup and on optimizing
+            the thermal stack so TEG output is robust across real outdoor conditions.
           </p>
       <div style="text-align:center; margin-top: 0.5rem;">
     <a href="mechatronics-journal.html" class="btn">
@@ -496,170 +506,5 @@
             converter, ESP32, relay, and LED strip) are tied together. This keeps the control side simple while
             still giving the ESP32 full authority over when the LEDs receive power.
           </p>
-        </div>
-
-        <div class="flex-item">
-          <h3>Electronics &amp; BOM</h3>
-          <p>The main electronic components are:</p>
-          <ul>
-            <li>1× ESP32 DevKitC microcontroller</li>
-            <li>3× Thermoelectric generator modules (TEGs) in series</li>
-            <li>1× Adjustable boost converter (TEG output → 12 V bus)</li>
-            <li>1× Buck converter (12 V → 5 V for ESP32)</li>
-            <li>1× WS2815 12 V addressable RGB LED strip</li>
-            <li>1× Relay module (5 V logic, opto-isolated)</li>
-            <li>1× Inline fuse holder with 3 A fuse for LED supply</li>
-            <li>Assorted wiring, connectors, and a weather-resistant enclosure</li>
-          </ul>
-          <p style="font-size: 0.9rem;">
-            A detailed BOM with part numbers, vendors, and estimated cost can be exported as a separate PDF or
-            spreadsheet for instructor review.
-          </p>
-        </div>
-      </div>
-
-      <div class="flex-row" style="margin-top: 1.2rem;">
-        <div class="flex-item">
-          <h3>Mechanical &amp; Thermal Design</h3>
           <p>
-            Mechanically, the core of the system is a steel plate that sits in the fire table’s heat zone. The hot
-            side of each TEG is bonded to this plate with thermal paste, and the cold side is clamped to finned
-            aluminum heatsinks. The goal is to maintain a strong temperature difference across each module while
-            protecting them from mechanical stress.
-          </p>
-          <p>
-            Wiring from the TEG stack is kept short and uses appropriately sized wire to minimize voltage drop.
-            All electronics live in a separate enclosure mounted away from direct flame, with cable grommets or
-            glands to keep the box as weather-resistant as possible.
-          </p>
-        </div>
-
-        <div class="flex-item">
-          <h3>Controller &amp; Software</h3>
-          <p>
-            The ESP32 is programmed using the Arduino IDE and the FastLED library. GPIO 18 is used as the LED data
-            pin, and GPIO 14 controls the relay module. The Level 1 demo code below drives a static red-white-blue
-            pattern and assumes the relay is active-LOW (which is common on many 5 V relay boards).
-          </p>
-          <div class="code-block">
-// Final demo code (Level 1)
-// ESP32 + WS2815 + relay demo for Thermo-Electric Infinity Table
-
-#include &lt;FastLED.h&gt;
-
-#define LED_PIN     18
-#define RELAY_PIN   14
-#define NUM_LEDS    60        // adjust to your actual strip length
-#define LED_TYPE    WS2812B   // WS2815 behaves similarly for FastLED
-#define COLOR_ORDER GRB
-
-CRGB leds[NUM_LEDS];
-
-void setup() {
-  pinMode(RELAY_PIN, OUTPUT);
-  digitalWrite(RELAY_PIN, LOW); // turn relay ON (active-LOW module)
-
-  FastLED.addLeds&lt;LED_TYPE, LED_PIN, COLOR_ORDER&gt;(leds, NUM_LEDS);
-  FastLED.setBrightness(80);    // tuned down for TEG power limits
-
-  fillRedWhiteBlue();
-  FastLED.show();
-}
-
-void loop() {
-  // Static pattern for demo – future versions can add animations or Wi-Fi control
-}
-
-void fillRedWhiteBlue() {
-  const int segment = NUM_LEDS / 3;
-  for (int i = 0; i &lt; NUM_LEDS; i++) {
-    if (i &lt; segment) {
-      leds[i] = CRGB::Red;
-    } else if (i &lt; 2 * segment) {
-      leds[i] = CRGB::White;
-    } else {
-      leds[i] = CRGB::Blue;
-    }
-  }
-}
-          </div>
-          <p style="font-size: 0.9rem; margin-top: 0.4rem;">
-            Future versions of the code will add brightness control, multiple modes, and a simple Wi-Fi web page
-            so users can change patterns from their phone without needing a separate app.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT / SKILLS -->
-    <section class="section" id="about">
-      <h2>About the Engineer</h2>
-      <p>
-        I’m Ryan “Chippy” Bostrom, a non-traditional Engineering Technology and Agricultural Business student at
-        UW-River Falls and the founder of ChippyCraft LLC. My background is in welding, fabrication, and epoxy
-        art, and I’m building a product line of infinity tables, patio sets, and lighting that blend industrial
-        steel frames with custom lighting and epoxy work.
-      </p>
-      <p>
-        This project let me connect my hands-on fabrication skills with mechatronics: power electronics,
-        microcontroller programming, and thermal design. It also serves a double purpose as both a graded
-        E-Portfolio for GENG 389 and an early prototype for a real ChippyCraft product.
-      </p>
-
-      <div class="flex-row" style="margin-top: 1rem;">
-        <div class="flex-item">
-          <h3>Skills Used</h3>
-          <ul>
-            <li>Embedded systems: ESP32 setup, GPIO, and FastLED</li>
-            <li>Power electronics: boost/buck converters and relay control</li>
-            <li>Thermal &amp; mechanical: TEG stack and enclosure layout</li>
-            <li>Wiring &amp; integration of 12 V LED strips</li>
-            <li>Documentation and portfolio building on a live website</li>
-          </ul>
-        </div>
-        <div class="flex-item">
-          <h3>Where This Goes Next</h3>
-          <p>
-            Future versions will focus on polishing the thermal design, improving TEG efficiency, and adding
-            user-friendly controls. The long-term goal is to integrate this system into production-ready
-            ChippyCraft patio tables and infinity lamps that can be sold to local bars, breweries, and homeowners.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <div style="text-align:center;">
-      <a href="infinity-lighting.html" class="btn">Back to Infinity Lighting</a>
-    </div>
-  </main>
-
-  <footer>
-    © 2025 ChippyCraft LLC — Mechatronics E-Portfolio • Thermo-Electric Infinity Table
-  </footer>
-
-  <script>
-    // Fade transition like other pages
-    document.querySelectorAll('.btn, a').forEach(link => {
-      link.addEventListener('click', e => {
-        const href = link.getAttribute('href');
-        if (href && !href.startsWith('#') && !href.startsWith('mailto:')) {
-          e.preventDefault();
-          document.body.style.transition = "opacity 0.6s ease";
-          document.body.style.opacity = "0";
-          setTimeout(() => {
-            window.location = href;
-          }, 600);
-        }
-      });
-    });
-
-    window.addEventListener('load', () => {
-      document.body.style.opacity = "0";
-      setTimeout(() => {
-        document.body.style.transition = "opacity 0.8s ease";
-        document.body.style.opacity = "1";
-      }, 50);
-    });
-  </script>
-</body>
-</html>
+            Bench testing and connector rework confirmed clean 12 V at the LED pads and reliable data
